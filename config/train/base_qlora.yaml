@@ -1,0 +1,43 @@
+# QLoRA settings (Strix Halo iGPU, 128GB unified)
+# Use for larger dense models (27B+) to reduce compute per step.
+# For smaller dense models (<=14B), use base_dense_lora.yaml instead.
+
+method: qlora
+
+lora:
+  r: 64
+  alpha: 128
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+  dropout: 0.05
+
+quantization:
+  load_in_4bit: true
+  bnb_4bit_compute_dtype: bfloat16  # verify ROCm bf16 support; fallback to fp16
+  bnb_4bit_quant_type: nf4
+
+training:
+  num_epochs: 3
+  batch_size: 4
+  gradient_accumulation: 4  # effective batch = 16
+  gradient_checkpointing: true
+  learning_rate: 2.0e-4
+  lr_scheduler: cosine
+  warmup_ratio: 0.03
+  max_seq_length: 8192
+
+optimizer: paged_adamw_8bit
+
+# Post-training
+merge: true
+quantize_output:
+  method: gptq
+  bits: 4
+  group_size: 128
+  calibration_samples: 256

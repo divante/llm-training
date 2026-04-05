@@ -1,0 +1,27 @@
+# Per-specialization overrides for code models.
+# Merged on top of the base template (selected by architecture + train_method).
+
+overrides:
+  # 32B dense (QLoRA) — reduce batch for compute
+  qwen2.5-coder-32b:
+    training:
+      batch_size: 4
+      max_seq_length: 8192
+
+  # 14B dense (bf16 LoRA) — comfortable
+  qwen2.5-coder-14b:
+    training:
+      batch_size: 8
+      max_seq_length: 8192
+
+  # 9B dense (bf16 LoRA)
+  qwen3.5-9b:
+    training:
+      batch_size: 8
+      max_seq_length: 8192
+
+  # 27B dense (QLoRA)
+  qwen3.5-27b:
+    training:
+      batch_size: 4
+      max_seq_length: 8192

@@ -1,0 +1,17 @@
+# Per-specialization overrides for research models.
+
+overrides:
+  qwen3.5-9b:
+    training:
+      batch_size: 8
+      max_seq_length: 8192
+
+  qwen3.5-27b:
+    training:
+      batch_size: 4
+      max_seq_length: 8192
+
+  qwen3.5-35b-a3b:
+    training:
+      batch_size: 2
+      max_seq_length: 4096

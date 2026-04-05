@@ -1,0 +1,42 @@
+# Model weights (large binary files)
+models/bases/
+models/lora/
+models/merged/
+models/gptq/
+models/gguf/
+
+# Datasets (large, downloaded/generated)
+datasets/raw/
+datasets/processed/
+datasets/calibration/
+datasets/eval/
+
+# Logs (generated at runtime)
+logs/training/
+logs/eval/
+logs/runs.jsonl
+logs/experiment_state.jsonl
+logs/comparison_report.md
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Environment
+.env
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# HuggingFace cache
+.cache/

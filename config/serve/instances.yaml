@@ -1,0 +1,45 @@
+# vLLM instance configs — one instance per model, each on its own port.
+# Start/stop instances as needed for different work sessions.
+
+instances:
+  code:
+    path: ./models/gptq/code/
+    port: 8100
+    max_model_len: 8192
+    gpu_memory_utilization: 0.45
+
+  creative:
+    path: ./models/gptq/creative/
+    port: 8101
+    max_model_len: 4096
+    gpu_memory_utilization: 0.25
+
+  research:
+    path: ./models/gptq/research-base/
+    port: 8102
+    max_model_len: 8192
+    gpu_memory_utilization: 0.35
+    lora_adapter: ./models/lora/research/
+    enable_expert_parallel: true
+
+  chat:
+    path: ./models/gptq/chat/
+    port: 8103
+    max_model_len: 4096
+    gpu_memory_utilization: 0.20
+
+  research-large:
+    path: ./models/gptq/research-large-base/
+    port: 8102  # shares port with research — only run one at a time
+    max_model_len: 8192
+    gpu_memory_utilization: 0.80
+    lora_adapter: ./models/lora/research-large/
+    enable_expert_parallel: true
+
+# Session presets — which instances to start together
+sessions:
+  coding: [code, research]
+  gamedev: [code, creative]
+  planning: [creative, research]
+  research-heavy: [research-large]
+  chat-only: [chat]

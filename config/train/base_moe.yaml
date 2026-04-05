@@ -1,0 +1,41 @@
+# bf16 LoRA settings for MoE models (Strix Halo iGPU, 128GB unified)
+# DO NOT use QLoRA for MoE — BNB 4-bit breaks expert routing.
+
+method: lora
+
+lora:
+  r: 32
+  alpha: 64
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+    - gate  # expert router — train this to steer specialization
+  modules_to_save:
+    - gate  # always save router weights
+  dropout: 0.05
+
+quantization:
+  load_in_4bit: false  # full bf16, no quantization during training
+
+training:
+  num_epochs: 2  # MoE converges faster
+  batch_size: 2
+  gradient_accumulation: 8  # effective batch = 16
+  gradient_checkpointing: true
+  learning_rate: 1.0e-4  # lower LR — MoE is more sensitive
+  lr_scheduler: cosine
+  warmup_ratio: 0.05  # longer warmup for stability
+  max_seq_length: 4096
+
+optimizer: paged_adamw_8bit
+
+# Post-training: adapter-based serving (recommended for MoE)
+post_training:
+  merge: false
+  serve_mode: adapter  # vLLM loads base GPTQ + LoRA adapter at runtime
+  base_quantized: true  # use pre-quantized base from HF

@@ -1,0 +1,23 @@
+# Per-specialization overrides for chat models.
+# Shorter context — conversations are typically short.
+
+overrides:
+  glm-4-9b:
+    training:
+      batch_size: 8
+      max_seq_length: 2048
+
+  qwen3.5-9b:
+    training:
+      batch_size: 8
+      max_seq_length: 4096
+
+  qwen3.5-27b:
+    training:
+      batch_size: 4
+      max_seq_length: 2048
+
+  qwen3.5-35b-a3b:
+    training:
+      batch_size: 2
+      max_seq_length: 2048

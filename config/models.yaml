@@ -1,0 +1,174 @@
+models:
+  code:
+    enabled: true
+    architecture: dense
+    base: "Qwen/Qwen2.5-Coder-32B-Instruct"
+    fallback_base: "Qwen/Qwen2.5-Coder-14B-Instruct"
+    use_fallback: false
+    # upgrade_base: "Qwen/Qwen3-Coder-*"  # uncomment when available on HF
+    gptq_bits: 4
+    gptq_group_size: 128
+    train_method: qlora  # qlora for 32B; switch to bf16_lora if using 14B fallback
+    train_config: "config/train/code.yaml"
+    datasets:
+      - name: "glaive-code-assistant-v3"
+        source: "huggingface"
+        hf_id: "glaiveai/glaive-code-assistant-v3"
+        sample_size: null
+        format: "sharegpt"
+        filters:
+          languages: ["python", "bash", "typescript", "cpp", "csharp", "gdscript"]
+      - name: "CodeFeedback-Filtered-Instruction"
+        source: "huggingface"
+        hf_id: "m-a-p/CodeFeedback-Filtered-Instruction"
+        sample_size: null
+        format: "sharegpt"
+      - name: "CommitPackFT"
+        source: "huggingface"
+        hf_id: "bigcode/commitpackft"
+        sample_size: 50000
+        format: "alpaca"
+      - name: "the-stack-v2-dedup"
+        source: "huggingface"
+        hf_id: "bigcode/the-stack-v2-dedup"
+        sample_size: 100000
+        format: "completion"
+        filters:
+          languages: ["python", "bash", "typescript"]
+          min_docstring_ratio: 0.1
+          skip_generated: true
+      - name: "game-engine-docs"
+        source: "local"
+        path: "datasets/raw/game-engine-docs/"
+        format: "alpaca"
+        custom: true
+      - name: "shader-pipeline"
+        source: "local"
+        path: "datasets/raw/shader-pipeline/"
+        format: "alpaca"
+        custom: true
+      - name: "game-dev-github"
+        source: "local"
+        path: "datasets/raw/game-dev-github/"
+        format: "sharegpt"
+        custom: true
+
+  creative:
+    enabled: true
+    architecture: dense  # switch to "moe" if using 35B-A3B
+    base: "THUDM/glm-4-9b-chat"
+    # alt_base_moe: "Qwen/Qwen3.5-35B-A3B"
+    # alt_base_dense: "Qwen/Qwen3.5-9B"
+    gptq_bits: 4
+    gptq_group_size: 128
+    train_method: qlora  # switch to bf16_lora if architecture=moe
+    train_config: "config/train/creative.yaml"
+    datasets:
+      - name: "lmsys-chat-1m-creative"
+        source: "huggingface"
+        hf_id: "lmsys/lmsys-chat-1m"
+        sample_size: 30000
+        format: "sharegpt"
+        filters:
+          categories: ["creative", "writing", "roleplay", "worldbuilding"]
+      - name: "cosmopedia-v2"
+        source: "huggingface"
+        hf_id: "HuggingFaceTB/cosmopedia-v2"
+        sample_size: 50000
+        format: "alpaca"
+      - name: "OpenOrca-planning"
+        source: "huggingface"
+        hf_id: "Open-Orca/OpenOrca"
+        sample_size: 30000
+        format: "sharegpt"
+        filters:
+          categories: ["planning", "analytical", "structured"]
+      - name: "UltraFeedback"
+        source: "huggingface"
+        hf_id: "openbmb/UltraFeedback"
+        sample_size: null
+        format: "preference"
+      - name: "game-lore"
+        source: "local"
+        path: "datasets/raw/game-lore/"
+        format: "sharegpt"
+        custom: true
+      - name: "project-plans"
+        source: "local"
+        path: "datasets/raw/project-plans/"
+        format: "alpaca"
+        custom: true
+      - name: "store-marketing"
+        source: "local"
+        path: "datasets/raw/store-marketing/"
+        format: "alpaca"
+        custom: true
+
+  research:
+    enabled: false  # enable when vanilla Qwen3.5 isn't enough
+    architecture: moe
+    base: "Qwen/Qwen3.5-35B-A3B"
+    # alt_base_larger: "Qwen/Qwen3.5-122B-A10B"
+    # alt_base_dense: "Qwen/Qwen2.5-14B-Instruct"
+    gptq_bits: 4
+    gptq_group_size: 128
+    train_method: bf16_lora
+    moe_serve_mode: adapter
+    moe_base_quantized: "Qwen/Qwen3.5-35B-A3B-GPTQ-Int4"
+    train_config: "config/train/research.yaml"
+    datasets:
+      - name: "FLAN-v2-reasoning"
+        source: "huggingface"
+        hf_id: "Muennighoff/flan"
+        sample_size: 50000
+        format: "alpaca"
+        filters:
+          categories: ["reasoning", "chain_of_thought"]
+      - name: "SlimOrca-Dedup"
+        source: "huggingface"
+        hf_id: "Open-Orca/SlimOrca-Dedup"
+        sample_size: 50000
+        format: "sharegpt"
+      - name: "OpenOrca-full"
+        source: "huggingface"
+        hf_id: "Open-Orca/OpenOrca"
+        sample_size: 50000
+        format: "sharegpt"
+      - name: "UltraFeedback"
+        source: "huggingface"
+        hf_id: "openbmb/UltraFeedback"
+        sample_size: null
+        format: "preference"
+
+  chat:
+    enabled: true
+    architecture: dense  # switch to "moe" if using 35B-A3B
+    base: "THUDM/glm-4-9b-chat"
+    # alt_base_moe: "Qwen/Qwen3.5-35B-A3B"
+    # alt_base_dense: "Qwen/Qwen3.5-9B"
+    gptq_bits: 4
+    gptq_group_size: 128
+    train_method: qlora  # switch to bf16_lora if architecture=moe
+    train_config: "config/train/chat.yaml"
+    serve_target: "strix-halo"
+    datasets:
+      - name: "lmsys-chat-1m"
+        source: "huggingface"
+        hf_id: "lmsys/lmsys-chat-1m"
+        sample_size: 100000
+        format: "sharegpt"
+      - name: "ShareGPT-Vicuna-unfiltered"
+        source: "huggingface"
+        hf_id: "anon8231489123/ShareGPT_Vicuna_unfiltered"
+        sample_size: null
+        format: "sharegpt"
+      - name: "Capybara"
+        source: "huggingface"
+        hf_id: "LDJnr/Capybara"
+        sample_size: null
+        format: "sharegpt"
+      - name: "personal-style"
+        source: "local"
+        path: "datasets/raw/personal-style/"
+        format: "sharegpt"
+        custom: true
