@@ -14,7 +14,7 @@ import json
 import sys
 from pathlib import Path
 
-from common import (
+from llm_training.common import (
     ROOT,
     Timer,
     append_run_log,

@@ -12,7 +12,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from common import ROOT, load_experiments_config, load_models_config, log, append_run_log
+from llm_training.common import ROOT, load_experiments_config, load_models_config, log, append_run_log
 
 
 def download_base_model(hf_id: str, local_dir: Path) -> None:

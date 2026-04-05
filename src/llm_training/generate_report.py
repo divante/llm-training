@@ -15,7 +15,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from common import ROOT, load_experiment_states, log
+from llm_training.common import ROOT, load_experiment_states, log
 
 
 def generate_report(output_path: Path | None = None) -> str:

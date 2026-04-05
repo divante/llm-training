@@ -16,7 +16,7 @@ import re
 import sys
 from pathlib import Path
 
-from common import ROOT, load_models_config, log, append_run_log
+from llm_training.common import ROOT, load_models_config, log, append_run_log
 
 
 def load_raw_dataset(ds_config: dict) -> list[dict] | None:

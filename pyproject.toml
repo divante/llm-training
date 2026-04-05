@@ -1,0 +1,52 @@
+[project]
+name = "llm-training"
+version = "0.1.0"
+description = "Local LLM fine-tuning pipeline for Strix Halo"
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.4",
+    "torchvision",
+    "torchaudio",
+    "transformers>=4.45",
+    "accelerate>=1.0",
+    "peft>=0.13",
+    "bitsandbytes>=0.44",
+    "datasets>=3.0",
+    "huggingface-hub>=0.25",
+    "auto-gptq>=0.7",
+    "datasketch>=1.6",
+    "nltk>=3.9",
+    "lm-eval>=0.4",
+    "pyyaml>=6.0",
+    "tqdm>=4.66",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+gptqmodel = ["gptqmodel>=1.0"]
+
+[project.scripts]
+llm-run = "llm_training.run_experiments:main"
+llm-download = "llm_training.download:main"
+llm-curate = "llm_training.curate:main"
+llm-train = "llm_training.train:main"
+llm-merge = "llm_training.merge:main"
+llm-quantize = "llm_training.quantize:main"
+llm-eval = "llm_training.eval:main"
+llm-report = "llm_training.generate_report:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/llm_training"]
+
+[[tool.uv.index]]
+name = "pytorch-rocm"
+url = "https://download.pytorch.org/whl/rocm6.2"
+
+[tool.uv.sources]
+torch = { index = "pytorch-rocm" }
+torchvision = { index = "pytorch-rocm" }
+torchaudio = { index = "pytorch-rocm" }

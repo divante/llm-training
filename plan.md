@@ -23,12 +23,12 @@ training pipeline. Follow these steps:
    validate hardware. See the "Directory Structure" and "Phase 0" sections.
 
 3. **Implement the scripts.** The "Claude Code Execution Guide" and "Experiment Runner"
-   sections contain pseudocode/specs for each script. Implement them as real Python files
-   in `~/llm-training/scripts/`. Key scripts to implement:
+   sections contain pseudocode/specs for each script. Implement them as Python modules
+   in `src/llm_training/`. Key modules:
    - `run_experiments.py` — main entry point (fire-and-forget, resumable)
    - `download.py`, `curate.py`, `train.py`, `merge.py`, `quantize.py`, `eval.py`
    - `generate_report.py` — comparison tables
-   - `serve.sh` — vLLM launch wrapper
+   - `scripts/serve.sh` — vLLM launch wrapper (stays as shell script)
 
 4. **Write `config/models.yaml`** from the "Model Registry" section.
    Write `config/experiments.yaml` from the "Experiment Matrix" section.
@@ -42,7 +42,7 @@ training pipeline. Follow these steps:
 
 6. **Start the experiment runner:**
    ```bash
-   python3 scripts/run_experiments.py --resume --filter "*chat*"
+   uv run llm-run --resume --filter "*chat*"
    ```
    This validates the pipeline end-to-end on the smallest experiment set.
    Once chat experiments pass, remove the filter for the full run.
@@ -671,7 +671,7 @@ Each line is one experiment's current state:
 ### Runner Script
 
 ```bash
-python3 scripts/run_experiments.py [--resume] [--filter "qwen3.5-9b*"] [--dry-run]
+uv run llm-run [--resume] [--filter "qwen3.5-9b*"] [--dry-run]
 ```
 
 ```python
@@ -896,7 +896,7 @@ Plan to let it run over a week. The runner handles restarts.
 Before launching the full experiment matrix, validate the entire pipeline works on Strix Halo with the smallest possible run:
 
 ```bash
-python3 scripts/run_experiments.py --filter "qwen3.5-9b_gptq-int4_chat*" --resume
+uv run llm-run --filter "qwen3.5-9b_gptq-int4_chat*" --resume
 ```
 
 This runs exactly 2 experiments (vanilla + finetuned) for the smallest model × cheapest quant × smallest dataset. Expected wall time: ~6-8 hours.
@@ -926,7 +926,7 @@ After validation passes, prioritize smaller models first:
 
 ```bash
 # After validation, run everything:
-python3 scripts/run_experiments.py --resume
+uv run llm-run --resume
 ```
 
 ---
@@ -936,13 +936,29 @@ python3 scripts/run_experiments.py --resume
 The agent expects this layout. Create it before running any phase.
 
 ```
-~/llm-training/
-├── plan.md                    ← THIS FILE (symlink or copy)
+~/git/llm-training/
+├── pyproject.toml             ← uv project (deps, entry points, ROCm torch index)
+├── plan.md                    ← THIS FILE
+├── src/llm_training/          ← Python package
+│   ├── run_experiments.py     ← MAIN ENTRY POINT: fire-and-forget experiment runner
+│   ├── common.py              ← shared utilities, config loading, state management
+│   ├── download.py            ← dataset download + initial filtering
+│   ├── curate.py              ← dedup, quality filter, format conversion
+│   ├── train.py               ← QLoRA / bf16 LoRA training (auto-selects based on architecture)
+│   ├── merge.py               ← LoRA merge into base (dense only)
+│   ├── quantize.py            ← GPTQ quantization (AutoGPTQ or GPTQModel w/ FailSafe)
+│   ├── eval.py                ← benchmark runner (lm-eval-harness + custom evals)
+│   └── generate_report.py     ← comparison report generator (called by runner at end)
+├── scripts/
+│   └── serve.sh               ← vLLM launch with session presets
 ├── config/
 │   ├── models.yaml            ← model registry (parsed by scripts)
+│   ├── experiments.yaml       ← experiment matrix
 │   ├── train/
-│   │   ├── base.yaml          ← shared QLoRA config (from Training Config Template above)
-│   │   ├── code.yaml          ← per-model overrides
+│   │   ├── base_qlora.yaml    ← QLoRA config (27B+ dense)
+│   │   ├── base_moe.yaml      ← bf16 LoRA config (MoE)
+│   │   ├── base_dense_lora.yaml ← bf16 LoRA config (<=14B dense)
+│   │   ├── code.yaml          ← per-specialization overrides
 │   │   ├── creative.yaml
 │   │   ├── research.yaml
 │   │   └── chat.yaml
@@ -957,16 +973,6 @@ The agent expects this layout. Create it before running any phase.
 │   │   └── chat/
 │   ├── calibration/           ← GPTQ calibration splits (256 samples each)
 │   └── eval/                  ← held-out eval splits (500 samples each)
-├── scripts/
-│   ├── run_experiments.py     ← MAIN ENTRY POINT: fire-and-forget experiment runner
-│   ├── generate_report.py     ← comparison report generator (called by runner at end)
-│   ├── download.py            ← dataset download + initial filtering
-│   ├── curate.py              ← dedup, quality filter, format conversion
-│   ├── train.py               ← QLoRA / bf16 LoRA training (auto-selects based on architecture)
-│   ├── merge.py               ← LoRA merge into base (dense only)
-│   ├── quantize.py            ← GPTQ quantization (AutoGPTQ or GPTQModel w/ FailSafe)
-│   ├── eval.py                ← benchmark runner (lm-eval-harness + custom evals)
-│   └── serve.sh               ← vLLM launch with profile selection
 ├── models/
 │   ├── bases/                 ← downloaded base models (shared across experiments)
 │   ├── lora/                  ← LoRA adapters, keyed by {base}_{specialization} (shared cache)
@@ -1179,36 +1185,12 @@ Each phase is independent and idempotent — safe to re-run.
 **Goal:** Create directory structure, install dependencies, validate hardware.
 
 ```bash
-# 1. Create directory tree
-mkdir -p ~/llm-training/{config/{train,serve},datasets/{raw,processed/{code,creative,research,chat},calibration,eval},scripts,models/{bases,lora,merged,gptq},logs/{training,eval}}
+# 1. Install dependencies via uv
+cd ~/git/llm-training
+uv sync
 
-# 2. Init run log
-touch ~/llm-training/logs/runs.jsonl
-
-# 3. Install Python dependencies (use uv if available, else pip)
-uv pip install --system \
-  torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2 \
-  transformers accelerate peft bitsandbytes \
-  datasets huggingface_hub \
-  auto-gptq optimum \
-  gptqmodel \
-  axolotl \
-  datasketch nltk \
-  lm-eval \
-  pyyaml tqdm rich
-# gptqmodel = GPTQModel 5.0+ (needed for MoE FailSafe quantization)
-# axolotl has ScatterMoE LoRA support for MoE expert-level training
-
-# 7. DEFERRED: Build llama.cpp for GGUF quantization + inference
-# Uncomment when enabling GGUF quant levels in config/experiments.yaml
-# cd ~/llm-training && git clone https://github.com/ggml-org/llama.cpp.git
-# cd llama.cpp && cmake -B build -DGGML_HIP=ON -DAMDGPU_TARGETS="gfx1151" && cmake --build build -j
-# gfx1151 = Strix Halo iGPU. Verify with: rocminfo | grep gfx
-# This gives you: llama-server, llama-quantize, convert_hf_to_gguf.py
-# If uv not available: pip install --break-system-packages <same packages>
-
-# 4. Validate ROCm + GPU
-python3 -c "
+# 2. Validate ROCm + GPU
+uv run python -c "
 import torch
 print(f'ROCm available: {torch.cuda.is_available()}')
 print(f'GPU count: {torch.cuda.device_count()}')
@@ -1217,13 +1199,15 @@ for i in range(torch.cuda.device_count()):
 print(f'bf16 support: {torch.cuda.is_bf16_supported()}')
 "
 
-# 5. Validate HuggingFace auth (needed for gated datasets)
-huggingface-cli whoami
-# If not logged in: huggingface-cli login --token <token>
+# 3. Validate HuggingFace auth (needed for gated datasets)
+uv run huggingface-cli whoami
+# If not logged in: uv run huggingface-cli login --token <token>
 
-# 6. Copy plan and model registry
-cp ~/git/normandy-sr2/local-llm-training-plan.md ~/llm-training/plan.md
-# Then write config/models.yaml from the Model Registry section above
+# 4. DEFERRED: Build llama.cpp for GGUF quantization + inference
+# Uncomment when enabling GGUF quant levels in config/experiments.yaml
+# git clone https://github.com/ggml-org/llama.cpp.git
+# cd llama.cpp && cmake -B build -DGGML_HIP=ON -DAMDGPU_TARGETS="gfx1151" && cmake --build build -j
+# gfx1151 = Strix Halo iGPU. Verify with: rocminfo | grep gfx
 ```
 
 **Verify before proceeding:**
@@ -1300,7 +1284,7 @@ for model_id, model_cfg in cfg['models'].items():
 For each enabled model, process its datasets into `datasets/processed/<model_id>/`:
 
 ```bash
-python3 scripts/curate.py --model <model_id>
+uv run llm-curate --model <model_id>
 ```
 
 The curate script should (implement or use as pseudocode):
@@ -1349,7 +1333,7 @@ For each dataset listed under the model in config/models.yaml:
 **Goal:** Measure base model performance BEFORE fine-tuning.
 
 ```bash
-python3 scripts/eval.py --model <model_id> --stage baseline
+uv run llm-eval --model <model_id> --stage baseline
 ```
 
 ```python
@@ -1385,7 +1369,7 @@ eval.py --model <model_id> --stage <baseline|finetuned>
 **Goal:** Fine-tune each enabled model. Script auto-selects QLoRA (dense) or bf16 LoRA (MoE) based on `train_method` in config.
 
 ```bash
-python3 scripts/train.py --model <model_id>
+uv run llm-train --model <model_id>
 ```
 
 ```python
@@ -1438,7 +1422,7 @@ train.py --model <model_id>
 **MoE models:** Either (a) keep adapter separate + use pre-quantized base, or (b) merge + requantize with FailSafe.
 
 ```bash
-python3 scripts/post_train.py --model <model_id>
+uv run llm-quantize --model <model_id>
 ```
 
 ```python
@@ -1503,7 +1487,7 @@ MoE (merged_failsafe):
 **Goal:** Measure improvement over baseline.
 
 ```bash
-python3 scripts/eval.py --model <model_id> --stage finetuned
+uv run llm-eval --model <model_id> --stage finetuned
 ```
 
 **Verify:**

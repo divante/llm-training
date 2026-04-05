@@ -16,29 +16,57 @@ Automated pipeline to fine-tune, quantize, and serve specialized LLM models:
 - **Quantization:** GPTQ INT4/INT8 only (vLLM on ROCm constraint)
 - **Serving:** vLLM >= 0.11.0, one instance per model
 
-## Key Files
+## Project Structure
 
-- `plan.md` — Full spec (the source of truth)
-- `config/models.yaml` — Model registry (bases, datasets, training methods)
-- `config/experiments.yaml` — Experiment matrix (base x quant x specialization)
-- `config/train/` — Training config templates (base_qlora, base_moe, base_dense_lora) + per-specialization overrides
-- `config/serve/instances.yaml` — vLLM instance configs + session presets
-- `scripts/run_experiments.py` — Main entry point (fire-and-forget, resumable)
-- `scripts/serve.sh` — vLLM launch wrapper
+```
+~/git/llm-training/
+├── pyproject.toml                  ← uv project (deps, entry points)
+├── src/llm_training/               ← Python package
+│   ├── run_experiments.py          ← Main entry point
+│   ├── common.py                   ← Shared utilities
+│   ├── download.py, curate.py, train.py, merge.py, quantize.py, eval.py
+│   └── generate_report.py
+├── scripts/serve.sh                ← vLLM launch wrapper
+├── config/                         ← All YAML configs
+├── models/, datasets/, logs/       ← Runtime data (gitignored)
+└── plan.md                         ← Full spec
+```
+
+## Setup
+
+```bash
+cd ~/git/llm-training
+uv sync                  # install deps (torch auto-resolves from ROCm index)
+```
 
 ## Quick Start
 
 ```bash
-# 1. Install deps (Phase 0)
-# 2. Validate pipeline end-to-end with smallest experiment:
-python3 scripts/run_experiments.py --filter "qwen3.5-9b_gptq-int4_chat*" --resume
+# Validate pipeline end-to-end with smallest experiment:
+uv run llm-run --filter "qwen3.5-9b_gptq-int4_chat*" --resume
 
-# 3. Full matrix:
-python3 scripts/run_experiments.py --resume
+# Full matrix:
+uv run llm-run --resume
 
-# 4. Serve models:
+# Individual steps:
+uv run llm-download --base qwen3.5-9b
+uv run llm-curate --model chat
+uv run llm-train --base qwen3.5-9b --specialization chat
+uv run llm-merge --base qwen3.5-9b --specialization chat
+uv run llm-quantize --base qwen3.5-9b --quant gptq_int4 --specialization chat --finetuned
+uv run llm-eval --experiment-id qwen3.5-9b_gptq-int4_chat_finetuned
+uv run llm-report
+
+# Serve models:
 ./scripts/serve.sh --session coding
 ```
+
+## Key Configs
+
+- `config/models.yaml` — Model registry (bases, datasets, training methods)
+- `config/experiments.yaml` — Experiment matrix (base x quant x specialization)
+- `config/train/` — Training templates + per-specialization overrides
+- `config/serve/instances.yaml` — vLLM instance configs + session presets
 
 ## Training Methods
 
@@ -50,7 +78,7 @@ python3 scripts/run_experiments.py --resume
 
 ## Shared Training Cache
 
-Training depends on `(base_model, specialization)`, NOT quant level. Multiple quant variants of the same base+spec reuse one adapter. This cuts training runs roughly in half.
+Training depends on `(base_model, specialization)`, NOT quant level. Multiple quant variants reuse one adapter. Cuts training runs roughly in half.
 
 ## State & Resumability
 
@@ -58,6 +86,6 @@ Training depends on `(base_model, specialization)`, NOT quant level. Multiple qu
 - `logs/runs.jsonl` — audit trail of all pipeline steps
 - Kill and restart at any point — completed steps are skipped
 
-## Dependencies
+## Package Manager
 
-torch (ROCm), transformers, accelerate, peft, bitsandbytes, datasets, huggingface_hub, auto-gptq, gptqmodel, axolotl, datasketch, nltk, lm-eval, pyyaml, tqdm, rich
+`uv` — lock file: `uv.lock`, Python 3.12+

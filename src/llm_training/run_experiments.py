@@ -14,16 +14,11 @@ from __future__ import annotations
 
 import argparse
 import fnmatch
-import os
-import sys
 import traceback
 from datetime import datetime, timezone
 from pathlib import Path
 
-# Ensure scripts/ is on the path for sibling imports
-sys.path.insert(0, str(Path(__file__).parent))
-
-from common import (
+from llm_training.common import (
     ROOT,
     Timer,
     load_experiment_states,
@@ -101,7 +96,7 @@ def run_step(experiment: dict, step: str) -> None:
     finetuned = experiment["finetuned"]
 
     if step == "download":
-        from download import download_for_experiment_base
+        from llm_training.download import download_for_experiment_base
         download_for_experiment_base(base_name)
 
         # Also download datasets for curate step
@@ -110,19 +105,19 @@ def run_step(experiment: dict, step: str) -> None:
         _ensure_datasets(spec)
 
     elif step == "train":
-        from train import train
+        from llm_training.train import train
         train(base_name, spec)
 
     elif step == "merge":
-        from merge import merge
+        from llm_training.merge import merge
         merge(base_name, spec)
 
     elif step == "quantize":
-        from quantize import quantize
+        from llm_training.quantize import quantize
         quantize(base_name, quant_name, spec, finetuned)
 
     elif step == "benchmark":
-        from eval import evaluate
+        from llm_training.eval import evaluate
         exp_id = experiment["id"]
         evaluate(exp_id)
 
@@ -136,18 +131,18 @@ def _ensure_datasets(specialization: str) -> None:
     log.info(f"Curated data for '{specialization}' not found. Running curate...")
 
     # Check if this specialization matches a model ID in models.yaml
-    from common import load_models_config
+    from llm_training.common import load_models_config
     models_cfg = load_models_config()
 
     if specialization in models_cfg.get("models", {}):
         model_cfg = models_cfg["models"][specialization]
         if model_cfg.get("enabled", False):
             # Download datasets first
-            from download import download_datasets
+            from llm_training.download import download_datasets
             download_datasets(specialization, model_cfg)
 
             # Then curate
-            from curate import curate_model
+            from llm_training.curate import curate_model
             curate_model(specialization)
             return
 
@@ -259,7 +254,7 @@ def run_experiment(experiment: dict, max_retries: int = 2) -> dict:
 
 def _cleanup(experiment: dict) -> None:
     """Clean up intermediate artifacts if configured."""
-    from common import load_experiments_config
+    from llm_training.common import load_experiments_config
     config = load_experiments_config()
     cleanup_cfg = config.get("cleanup", {})
 
@@ -365,7 +360,7 @@ Examples:
     log.info("All experiments processed. Generating report...")
     log.info("=" * 60 + "\n")
 
-    from generate_report import generate_report
+    from llm_training.generate_report import generate_report
     generate_report()
 
     log.info(f"\nFinal: {completed} completed, {failed} failed, {skipped} skipped")

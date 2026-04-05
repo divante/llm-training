@@ -12,7 +12,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from common import ROOT, Timer, append_run_log, load_experiments_config, log, training_cache_key
+from llm_training.common import ROOT, Timer, append_run_log, load_experiments_config, log, training_cache_key
 
 
 def merge(

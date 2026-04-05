@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import sys
 import time
 from datetime import datetime, timezone
@@ -12,7 +13,7 @@ from typing import Any
 
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(os.environ.get("LLM_TRAINING_ROOT", Path(__file__).resolve().parent.parent.parent))
 MODELS_CONFIG = ROOT / "config" / "models.yaml"
 EXPERIMENTS_CONFIG = ROOT / "config" / "experiments.yaml"
 STATE_FILE = ROOT / "logs" / "experiment_state.jsonl"
