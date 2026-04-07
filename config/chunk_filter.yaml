@@ -1,0 +1,472 @@
+# Chunk filter configuration for game-engine-docs.
+# Classifies markdown doc files into Tier 1 (5 Q&A), Tier 2 (2 Q&A), Tier 3 (skip).
+# Pure keyword/filename matching — no model calls.
+#
+# Default for Unreal is Tier 3 (skip). Only files matching T1/T2 rules are kept.
+# Uses UE naming conventions: U-prefix (UObject), A-prefix (AActor) = user-facing classes.
+# F-prefix (structs), I-prefix (interfaces), S-prefix (Slate) = mostly internal.
+
+# ---------------------------------------------------------------------------
+# Unreal Engine 5
+# ---------------------------------------------------------------------------
+unreal:
+  default_tier: 3
+
+  tier1:
+    # Priority modules — U/A classes from these are always T1
+    modules:
+      # Gameplay Framework
+      - Actor
+      - ActorComponent
+      - Character
+      - Pawn
+      - PlayerController
+      - PlayerState
+      - GameMode
+      - GameState
+      - GameInstance
+      - HUD
+      # GAS
+      - GameplayAbility
+      - AbilitySystemComponent
+      - GameplayEffect
+      - GameplayTask
+      - GameplayCueManager
+      - GameplayCue
+      - GameplayTagContainer
+      - GameplayTag
+      - GameplayStatics
+      # Niagara
+      - NiagaraSystem
+      - NiagaraComponent
+      - NiagaraDataInterface
+      - NiagaraEmitter
+      - NiagaraModule
+      - NiagaraActor
+      - NiagaraSimulation
+      # PCG
+      - PCGGraph
+      - PCGComponent
+      - PCGSettings
+      - PCGNode
+      - PCGData
+      # Enhanced Input
+      - EnhancedInput
+      - InputAction
+      - InputComponent
+      - InputMapping
+      # UI
+      - UserWidget
+      - Widget
+      # Animation
+      - AnimInstance
+      - AnimMontage
+      - AnimSequence
+      - AnimBlueprint
+      # AI
+      - AIController
+      - BehaviorTree
+      - BTTask
+      - BTDecorator
+      - BTService
+      - AIPerception
+      # Navigation
+      - NavigationTypes
+      - RecastNavMesh
+      # Networking
+      - ReplicationGraph
+      - NetDriver
+      - NetConnection
+      # Physics
+      - BodyInstance
+      # World
+      - World
+      - Level
+      - WorldPartition
+      # Core
+      - Blueprint
+      - DataAsset
+      - DataTable
+      - KismetSystemLibrary
+      - KismetMathLibrary
+      - Material
+      - MaterialInstance
+      - SkeletalMesh
+      - StaticMesh
+      - Landscape
+      - Camera
+      - Sound
+      - SoundWave
+      - Subsystem
+
+    # UE naming convention: U-prefix and A-prefix classes from non-blocked modules
+    # are promoted to T1 if they have enough substance (see content thresholds below)
+    promote_ua_classes: true
+    ua_min_methods: 3     # minimum ### headings (method docs)
+    ua_min_lines: 15      # minimum non-empty lines
+    ua_min_bytes: 200     # minimum content bytes
+
+  tier2:
+    # Module-level overview files (no dot in filename) from non-blocked modules
+    # These provide context even if they're not full class references
+    include_module_overviews: true
+    overview_min_lines: 10
+    overview_min_bytes: 300
+
+    # F-struct files — disabled by default. Even with high thresholds,
+    # thousands of internal structs qualify. Module overviews provide
+    # better context for game developers.
+    include_f_structs: false
+    f_struct_min_methods: 15
+    f_struct_min_lines: 25
+    f_struct_min_bytes: 800
+
+  skip:
+    # Module patterns (regex) — engine internals, platform backends, editor-only
+    module_patterns:
+      # Graphics backends / RHI
+      - "^D3D"
+      - "^RHI"
+      - "^Vulkan"
+      - "^OpenGL"
+      - "^Metal"
+      - "^RDNA"
+      - "^DynamicRHI$"
+      # Platform-specific
+      - "^Android"
+      - "^Apple"
+      - "^IOS"
+      - "^Linux"
+      - "^Mac(?!ro)"
+      - "^Windows(?!.*(Input|Error))"
+      - "^GenericPlatform"
+      # Test / debug / automation
+      - "Test"
+      - "^Automation"
+      - "^Debug"
+      - "^Mock"
+      # Editor internals
+      - "^Datasmith"
+      - "^Dataflow"
+      - "^ChaosVD"
+      - "^syms_"
+      - "^NoExportTypes$"
+      - "^UnrealTypePrivate$"
+      - "^UnrealType$"
+      - "^Expression$"
+      # Rendering internals
+      - "^ScenePrivate$"
+      - "^SceneVisibility"
+      - "^SceneRendering$"
+      - "^SceneManagement$"
+      - "^MeshPassProcessor$"
+      - "^MaterialUniform"
+      - "^MaterialExpression"
+      - "^MaterialShared$"
+      - "^MaterialStats"
+      - "^MaterialEditor"
+      - "^MaterialRender"
+      - "^MaterialProperty"
+      - "^MaterialParameter"
+      - "^StaticParameter"
+      - "^Lumen"
+      - "^Nanite"
+      - "^VirtualShadow"
+      - "^VirtualTextur"
+      - "^LightMap"
+      - "^ShadowRender"
+      - "^StaticLighting"
+      - "^HdrCustom"
+      - "^PostProcessMobile$"
+      - "^ResolveShader$"
+      - "^ScreenRendering$"
+      - "^RenderGraph"
+      - "^RenderResource$"
+      - "^Renderer"
+      - "^RenderingCommon$"
+      - "^GlobalRender"
+      - "^MediaShader"
+      - "^DrawElement"
+      - "^ScreenPass$"
+      - "^ShaderCompiler"
+      - "^ShaderCore$"
+      - "^ShaderCode"
+      - "^ShaderParameter"
+      - "^GlobalShader$"
+      - "^Shader$"
+      - "^PSOPrecache$"
+      - "^MeshCardBuild$"
+      - "^HairStrand"
+      - "^DistanceField"
+      # Serialization / low-level internals
+      - "^NameTypes$"
+      - "^SemanticTypes$"
+      - "^MemoryImage$"
+      - "^MemoryArena$"
+      - "^BulkData$"
+      - "^CompactBinary$"
+      - "^ConfigCache"
+      - "^ObjectResource$"
+      - "^ObjectSave"
+      - "^IoDispatcher"
+      - "^AsyncLoading"
+      - "^ContentStreaming$"
+      - "^RewindData$"
+      - "^InstallBundle"
+      - "^TraceControl"
+      - "^ArchiveStack"
+      - "^TaskGraph"
+      - "^Threading$"
+      - "^IConsoleManager$"
+      - "^CoreMisc$"
+      - "^CoreGlobals$"
+      - "^CsvProfiler$"
+      - "^StatsSystem"
+      - "^StatsData$"
+      - "^StatsFile$"
+      - "^TimingEvent$"
+      - "^ScopedTimer"
+      - "^Localization"
+      - "^Internationalization"
+      - "^TokenizedMessage$"
+      - "^SyncStatus$"
+      - "^TextHistory$"
+      - "^CompositeFont$"
+      - "^FontCache$"
+      - "^NetTrace"
+      # AR (niche)
+      - "^ARComponent$"
+      - "^ARType"
+      - "^ARTrackable$"
+      # Field system internals
+      - "^FieldSystem"
+      # Misc
+      - "^SwitchboardTask"
+      - "^DirectLink"
+      - "^StageMessage"
+      - "^IUnrealInsight"
+      - "^SubmitTool"
+      - "^TextureShare"
+      - "^FCPXMLNode$"
+      - "^RtAudio$"
+      - "^ISoundfield"
+      - "^IAudioExtension"
+      - "^CookTypes$"
+      - "^TemplateProject"
+      - "^SlateDebugging$"
+      - "^DiffControl$"
+      - "^ImageComparer$"
+      - "^ReplayTypes$"
+      - "^PackageMap"
+      - "^LiveLinkTypes$"
+      - "^NetAnalytics"
+      - "^SkeletalRenderGPU"
+      - "^SkeletalMeshLOD"
+      - "^AnimCompression"
+      - "^AnimationCompression$"
+      - "^Achievements"
+      - "^AcceptFriend"
+      - "^AbandonedRender"
+      - "^AnalyticsTracer$"
+      - "^ActiveMovieScene"
+      - "^ActiveStateMachine"
+      - "^AnimPhysicsSolver$"
+      - "^AdvancedPreview"
+      - "^AnimationEditor"
+      - "^AnimBlueprintClass"
+      - "^AnimBlueprintCompilation"
+      - "^AnimationBlueprint(?!$)"
+      - "^ClearReplacement"
+      - "^ParticleHelper$"
+      - "^SourceControl"
+
+    # Filename patterns to always skip (regex on full stem)
+    filename_patterns:
+      - "^_index$"
+      - "^index$"
+      - "Details$"
+      - "Customization$"
+      - "DragDrop"
+      - "Visualizer$"
+      - "EditorMode$"
+      - "EditorModule$"
+      - "^Editor"
+      - "Factory$"
+
+    min_content_bytes: 100
+    max_trivial_lines: 8
+
+# ---------------------------------------------------------------------------
+# Godot 4.x API reference
+# ---------------------------------------------------------------------------
+godot_api:
+  default_tier: 3
+
+  tier1:
+    classes:
+      # Node / SceneTree
+      - Node
+      - Node2D
+      - Node3D
+      - SceneTree
+      - Viewport
+      - Window
+      - SubViewport
+      # Physics
+      - CharacterBody2D
+      - CharacterBody3D
+      - RigidBody2D
+      - RigidBody3D
+      - StaticBody2D
+      - StaticBody3D
+      - Area2D
+      - Area3D
+      - CollisionShape2D
+      - CollisionShape3D
+      - RayCast2D
+      - RayCast3D
+      - PhysicsDirectBodyState2D
+      - PhysicsDirectBodyState3D
+      - PhysicsDirectSpaceState2D
+      - PhysicsDirectSpaceState3D
+      # Shaders
+      - ShaderMaterial
+      - Shader
+      - VisualShader
+      # Animation
+      - AnimationPlayer
+      - AnimationTree
+      - AnimationMixer
+      - Tween
+      - AnimatedSprite2D
+      - AnimatedSprite3D
+      # UI
+      - Control
+      - Button
+      - Label
+      - LineEdit
+      - TextEdit
+      - RichTextLabel
+      - Panel
+      - Container
+      - HBoxContainer
+      - VBoxContainer
+      - GridContainer
+      - MarginContainer
+      - ScrollContainer
+      - TextureRect
+      - ProgressBar
+      - OptionButton
+      - ItemList
+      - Tree
+      - TabContainer
+      - PopupMenu
+      # Core
+      - Object
+      - RefCounted
+      - Resource
+      - PackedScene
+      # TileMap
+      - TileMapLayer
+      - TileSet
+      - TileData
+      # Navigation
+      - NavigationAgent2D
+      - NavigationAgent3D
+      - NavigationRegion2D
+      - NavigationRegion3D
+      - NavigationServer2D
+      - NavigationServer3D
+      # GDExtension
+      - GDExtension
+      # Resources
+      - ResourceLoader
+      - ResourceSaver
+      # Camera
+      - Camera2D
+      - Camera3D
+      # Audio
+      - AudioStreamPlayer
+      - AudioStreamPlayer2D
+      - AudioStreamPlayer3D
+      - AudioServer
+      # Rendering
+      - Sprite2D
+      - Sprite3D
+      - MeshInstance2D
+      - MeshInstance3D
+      - Light2D
+      - DirectionalLight3D
+      - OmniLight3D
+      - SpotLight3D
+      - GPUParticles2D
+      - GPUParticles3D
+      - CPUParticles2D
+      - CPUParticles3D
+      # Input
+      - Input
+      - InputEvent
+      - InputEventAction
+      - InputEventKey
+      - InputEventMouseButton
+      - InputEventMouseMotion
+      - InputMap
+      # Networking
+      - MultiplayerPeer
+      - MultiplayerAPI
+      - HTTPRequest
+      # Math
+      - Vector2
+      - Vector3
+      - Vector2i
+      - Vector3i
+      - Vector4
+      - Vector4i
+      - Transform2D
+      - Transform3D
+      - Basis
+      - AABB
+      - Color
+      - Rect2
+
+    content_keywords:
+      - "@export"
+      - "@onready"
+      - "class_name"
+
+  tier2:
+    # Non-T1 classes with enough substance
+    min_content_bytes: 200
+    min_lines: 8
+
+  skip:
+    class_patterns:
+      - "^Editor"
+      - "^VisualShaderNode"
+      - "^RenderingDevice"
+      - "^PhysicsServer"
+      - "^IP$"
+      - "^TCP"
+      - "^UDP"
+      - "^StreamPeer"
+      - "^Crypto"
+      - "^X509"
+      - "^DTLS"
+      - "^TLS"
+      - "^Mutex$"
+      - "^Semaphore$"
+      - "^Thread$"
+    min_content_bytes: 80
+    max_trivial_lines: 6
+
+# ---------------------------------------------------------------------------
+# Godot 4.x tutorials/docs — all Tier 1 (curated guides)
+# ---------------------------------------------------------------------------
+godot_docs:
+  default_tier: 1
+  skip:
+    filename_patterns:
+      - "^_index$"
+      - "^index$"
+      - "^GD0"
+    min_content_bytes: 200

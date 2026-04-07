@@ -166,7 +166,7 @@ Add/remove entries freely. The `enabled` flag controls what's actively in the pi
 | **Enabled** | no _(start without this — vanilla Qwen3.5 is already strong at research; enable later if needed)_ |
 | **Architecture** | MoE preferred |
 | **Base** | `Qwen/Qwen3.5-35B-A3B` (35B total, 3B active — strong reasoning with thinking mode) |
-| **Alt base (larger)** | `Qwen/Qwen3.5-122B-A10B` — 122B total, 10B active. ~68GB GPTQ-4bit. Fits Strix Halo but tight for pairs. Best reasoning quality. |
+| **Alt base (larger)** | `Qwen/qwen3.5:122b-a10b` — 122B total, 10B active. ~68GB GPTQ-4bit. Fits Strix Halo but tight for pairs. Best reasoning quality. |
 | **Alt base (dense)** | `Qwen/Qwen2.5-14B-Instruct` (original pick, still solid) |
 | **Training method** | bf16 LoRA (MoE) or QLoRA (dense) |
 | **GPTQ size** | ~10-12GB (35B-A3B) / ~68GB (122B-A10B) / ~8GB (Qwen2.5-14B) |
@@ -267,7 +267,7 @@ quantize_output:
 
 ### Template B: MoE Models (bf16 LoRA)
 
-For: Qwen3.5-35B-A3B, Qwen3.5-122B-A10B, any MoE architecture.
+For: Qwen3.5-35B-A3B, qwen3.5:122b-a10b, any MoE architecture.
 
 **Why not QLoRA for MoE:** BitsAndBytes 4-bit quantization breaks expert routing in MoE models. Expert gating weights get corrupted at 4-bit precision, leading to training instability and degraded expert selection. Use bf16 LoRA instead — it fits on 24GB for MoE models where active params are small (3-10B).
 
@@ -451,7 +451,7 @@ instances:
     gpu_memory_utilization: 0.20
 
   research-large:                                 # 122B-A10B solo — fills most of 128GB
-    path: ./models/gptq/research-large-base/     # Qwen3.5-122B-A10B-GPTQ
+    path: ./models/gptq/research-large-base/     # qwen3.5:122b-a10b-GPTQ
     port: 8102
     lora_adapter: ./models/lora/research-large/  # optional
     max_model_len: 8192
@@ -1107,7 +1107,7 @@ models:
     enabled: false  # enable when vanilla Qwen3.5 isn't enough
     architecture: moe
     base: "Qwen/Qwen3.5-35B-A3B"
-    # alt_base_larger: "Qwen/Qwen3.5-122B-A10B"  # ~68GB GPTQ — solo on Strix Halo, no pairs
+    # alt_base_larger: "Qwen/qwen3.5:122b-a10b"  # ~68GB GPTQ — solo on Strix Halo, no pairs
     # alt_base_dense: "Qwen/Qwen2.5-14B-Instruct"
     gptq_bits: 4
     gptq_group_size: 128
@@ -1592,7 +1592,7 @@ Quick reference for all Qwen3.5 variants relevant to this plan.
 | Qwen3.5-9B | Dense | 9B | 9B | ~5GB | Yes (easily) | QLoRA: yes |
 | Qwen3.5-27B | Dense | 27B | 27B | ~15GB | Yes | QLoRA: tight, batch=1 |
 | Qwen3.5-35B-A3B | MoE | 35B | 3B | ~10-12GB | Yes | bf16 LoRA: yes (~18GB) |
-| Qwen3.5-122B-A10B | MoE | 122B | 10B | ~68GB | Solo only | bf16 LoRA: no (too large) |
+| qwen3.5:122b-a10b | MoE | 122B | 10B | ~68GB | Solo only | bf16 LoRA: no (too large) |
 | Qwen3.5-397B-A17B | MoE | 397B | 17B | ~220GB | No | No |
 
 **Key advantage of MoE on Strix Halo:** The iGPU is memory-bandwidth-bound, not compute-bound. MoE models only activate a fraction of params per token, so effective compute per token is much lower than the total param count suggests. A 35B-A3B MoE runs at similar speed to a 3-5B dense model while delivering much better quality.
@@ -1618,6 +1618,6 @@ Quick reference for all Qwen3.5 variants relevant to this plan.
 - [ ] GPTQModel 5.0+ FailSafe: test quality on Qwen3.5-35B-A3B — compare merged+failsafe vs adapter-serving on 50 prompts
 - [ ] GPTQ calibration: same-domain vs. general (C4) — benchmark both
 - [ ] Game dev dataset size: is 20-30K enough or do we need more coverage?
-- [ ] Qwen3.5-122B-A10B inference speed on Strix Halo — worth it as solo research model? (~68GB GPTQ, leaves ~50GB for KV cache)
+- [ ] qwen3.5:122b-a10b inference speed on Strix Halo — worth it as solo research model? (~68GB GPTQ, leaves ~50GB for KV cache)
 - [ ] Axolotl ScatterMoE LoRA on ROCm — Triton kernels may need ROCm-specific builds. If Axolotl MoE support doesn't work on ROCm, fall back to HuggingFace Trainer with standard LoRA (loses expert-level targeting but still functional)
 - [ ] (DEFERRED) llama.cpp vs vLLM throughput on Strix Halo for same model — measure when enabling GGUF experiments
