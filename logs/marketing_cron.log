@@ -1,0 +1,532 @@
+2026-04-08 14:17:05 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 14:17:24 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 14:17:24 INFO     Retrying request to /chat/completions in 0.413463 seconds
+2026-04-08 14:17:27 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 14:20:13 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 504 Gateway Timeout"
+2026-04-08 14:20:13 INFO     Retrying request to /chat/completions in 0.381163 seconds
+2026-04-08 14:20:15 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 14:20:15 INFO     Retrying request to /chat/completions in 0.771445 seconds
+2026-04-08 14:20:17 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 14:20:17 WARNING  Retryable error (attempt 1/6), sleeping 1.3s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'stepfun/step-3.5-flash:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'StepFun', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 14:20:19 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 14:20:19 INFO     Retrying request to /chat/completions in 0.414979 seconds
+2026-04-08 14:20:20 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 14:20:20 INFO     Retrying request to /chat/completions in 0.840577 seconds
+2026-04-08 14:20:22 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 14:20:22 WARNING  Retryable error (attempt 2/6), sleeping 2.5s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775683260000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 14:20:27 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 14:20:27 INFO     Retrying request to /chat/completions in 0.382801 seconds
+2026-04-08 14:20:28 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+Traceback (most recent call last):
+  File "/home/shepard/git/llm-training/scripts/generate/generate_marketing.py", line 190, in <module>
+    main()
+  File "/home/shepard/git/llm-training/scripts/generate/generate_marketing.py", line 161, in main
+    response = generate(client, prompt, system=SYSTEM_PROMPT)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/scripts/generate/common.py", line 86, in generate
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Provider returned error', 'code': 402, 'metadata': {'raw': '{"error":"API key USD spend limit exceeded. Your account may still have USD balance, but this API key has reached its configured USD spending limit."}', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:17:04 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:17:04 INFO     Retrying request to /chat/completions in 0.451977 seconds
+2026-04-08 15:17:06 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:17:06 INFO     Retrying request to /chat/completions in 0.833011 seconds
+2026-04-08 15:17:08 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:19:22 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:19:22 INFO     Retrying request to /chat/completions in 0.420756 seconds
+2026-04-08 15:19:25 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:19:25 INFO     Retrying request to /chat/completions in 0.863995 seconds
+2026-04-08 15:19:27 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:19:27 WARNING  Retryable error (attempt 1/6), sleeping 1.2s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775692800000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:19:29 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:19:29 INFO     Retrying request to /chat/completions in 0.446384 seconds
+2026-04-08 15:19:30 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:19:30 INFO     Retrying request to /chat/completions in 0.896611 seconds
+2026-04-08 15:19:31 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:22:14 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:22:14 INFO     Retrying request to /chat/completions in 0.380687 seconds
+2026-04-08 15:22:15 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:22:15 INFO     Retrying request to /chat/completions in 0.873856 seconds
+2026-04-08 15:22:17 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:22:17 WARNING  Retryable error (attempt 1/6), sleeping 1.2s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775692800000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:22:19 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:22:19 INFO     Retrying request to /chat/completions in 0.387310 seconds
+2026-04-08 15:22:21 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:22:21 INFO     Retrying request to /chat/completions in 0.820465 seconds
+2026-04-08 15:22:22 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:22:22 WARNING  Retryable error (attempt 2/6), sleeping 3.0s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'meta-llama/llama-3.2-3b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:22:26 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:22:26 INFO     Retrying request to /chat/completions in 0.476037 seconds
+2026-04-08 15:22:27 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:22:27 INFO     Retrying request to /chat/completions in 0.982064 seconds
+2026-04-08 15:22:28 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:22:28 WARNING  Retryable error (attempt 3/6), sleeping 4.5s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775686980000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:22:33 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:22:33 INFO     Retrying request to /chat/completions in 0.482755 seconds
+2026-04-08 15:22:35 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:22:35 INFO     Retrying request to /chat/completions in 0.996413 seconds
+2026-04-08 15:22:37 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:25:31 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:25:31 INFO     Retrying request to /chat/completions in 0.490985 seconds
+2026-04-08 15:25:32 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:25:32 INFO     Retrying request to /chat/completions in 0.906223 seconds
+2026-04-08 15:25:34 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:25:34 WARNING  Retryable error (attempt 1/6), sleeping 1.3s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775692800000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:25:37 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:25:37 INFO     Retrying request to /chat/completions in 0.450310 seconds
+2026-04-08 15:25:39 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:26:00 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:26:00 INFO     Retrying request to /chat/completions in 0.483640 seconds
+2026-04-08 15:26:01 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:26:28 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:26:52 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:27:15 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:27:15 INFO     Retrying request to /chat/completions in 0.385277 seconds
+2026-04-08 15:27:16 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:27:16 INFO     Retrying request to /chat/completions in 0.845220 seconds
+2026-04-08 15:27:20 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:27:42 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:27:42 INFO     Retrying request to /chat/completions in 0.422632 seconds
+2026-04-08 15:27:44 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:28:06 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:06 INFO     Retrying request to /chat/completions in 0.417339 seconds
+2026-04-08 15:28:07 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:07 INFO     Retrying request to /chat/completions in 0.997824 seconds
+2026-04-08 15:28:09 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:09 WARNING  Retryable error (attempt 1/6), sleeping 1.2s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775692800000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:28:10 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:10 INFO     Retrying request to /chat/completions in 0.433922 seconds
+2026-04-08 15:28:12 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:12 INFO     Retrying request to /chat/completions in 0.934948 seconds
+2026-04-08 15:28:14 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:14 WARNING  Retryable error (attempt 2/6), sleeping 3.0s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'cognitivecomputations/dolphin-mistral-24b-venice-edition:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:28:17 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:17 INFO     Retrying request to /chat/completions in 0.411143 seconds
+2026-04-08 15:28:18 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:18 INFO     Retrying request to /chat/completions in 0.902520 seconds
+2026-04-08 15:28:20 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:20 WARNING  Retryable error (attempt 3/6), sleeping 4.7s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775687340000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:28:26 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:26 INFO     Retrying request to /chat/completions in 0.463175 seconds
+2026-04-08 15:28:27 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:27 INFO     Retrying request to /chat/completions in 0.998373 seconds
+2026-04-08 15:28:28 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:28 WARNING  Retryable error (attempt 4/6), sleeping 8.6s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775692800000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:28:38 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:38 INFO     Retrying request to /chat/completions in 0.404443 seconds
+2026-04-08 15:28:41 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:41 INFO     Retrying request to /chat/completions in 0.926128 seconds
+2026-04-08 15:28:42 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:28:42 WARNING  Retryable error (attempt 5/6), sleeping 16.1s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775687340000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:29:00 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:29:00 INFO     Retrying request to /chat/completions in 0.422146 seconds
+2026-04-08 15:29:01 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:29:01 INFO     Retrying request to /chat/completions in 0.837273 seconds
+2026-04-08 15:29:03 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:29:03 WARNING  Retryable error (attempt 6/6), sleeping 32.6s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775692800000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:29:36 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:29:36 INFO     Retrying request to /chat/completions in 0.473623 seconds
+2026-04-08 15:29:39 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:30:03 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:03 INFO     Retrying request to /chat/completions in 0.458245 seconds
+2026-04-08 15:30:04 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:04 INFO     Retrying request to /chat/completions in 0.851014 seconds
+2026-04-08 15:30:06 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:06 WARNING  Retryable error (attempt 1/6), sleeping 1.8s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775687460000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:30:09 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:09 INFO     Retrying request to /chat/completions in 0.381499 seconds
+2026-04-08 15:30:10 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:10 INFO     Retrying request to /chat/completions in 0.846982 seconds
+2026-04-08 15:30:12 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:12 WARNING  Retryable error (attempt 2/6), sleeping 2.7s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775692800000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:30:16 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:16 INFO     Retrying request to /chat/completions in 0.456606 seconds
+2026-04-08 15:30:17 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:17 INFO     Retrying request to /chat/completions in 0.973424 seconds
+2026-04-08 15:30:24 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:30:48 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:48 INFO     Retrying request to /chat/completions in 0.476930 seconds
+2026-04-08 15:30:49 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:49 INFO     Retrying request to /chat/completions in 0.841328 seconds
+2026-04-08 15:30:51 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:51 WARNING  Retryable error (attempt 1/6), sleeping 1.9s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775692800000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:30:55 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:55 INFO     Retrying request to /chat/completions in 0.416151 seconds
+2026-04-08 15:30:56 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:56 INFO     Retrying request to /chat/completions in 0.910862 seconds
+2026-04-08 15:30:57 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:30:57 WARNING  Retryable error (attempt 2/6), sleeping 2.3s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775687460000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:31:01 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:31:01 INFO     Retrying request to /chat/completions in 0.486717 seconds
+2026-04-08 15:31:02 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:31:02 INFO     Retrying request to /chat/completions in 0.837145 seconds
+2026-04-08 15:31:04 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:31:04 WARNING  Retryable error (attempt 3/6), sleeping 4.1s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'cognitivecomputations/dolphin-mistral-24b-venice-edition:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:31:09 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:31:09 INFO     Retrying request to /chat/completions in 0.433704 seconds
+2026-04-08 15:31:10 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:31:10 INFO     Retrying request to /chat/completions in 0.870605 seconds
+2026-04-08 15:31:12 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:31:12 WARNING  Retryable error (attempt 4/6), sleeping 8.3s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775687520000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:31:22 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:31:22 INFO     Retrying request to /chat/completions in 0.391682 seconds
+2026-04-08 15:31:24 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:31:24 INFO     Retrying request to /chat/completions in 0.989051 seconds
+2026-04-08 15:31:35 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:31:37 WARNING  Retryable error (attempt 5/6), sleeping 16.3s: 'NoneType' object is not subscriptable
+2026-04-08 15:31:55 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:31:55 INFO     Retrying request to /chat/completions in 0.439342 seconds
+2026-04-08 15:31:57 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:31:57 INFO     Retrying request to /chat/completions in 0.777416 seconds
+2026-04-08 15:31:58 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:31:58 WARNING  Retryable error (attempt 6/6), sleeping 32.5s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775687520000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:32:32 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:32:32 INFO     Retrying request to /chat/completions in 0.469527 seconds
+2026-04-08 15:32:34 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:32:34 INFO     Retrying request to /chat/completions in 0.821454 seconds
+2026-04-08 15:32:40 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:33:05 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:33:05 INFO     Retrying request to /chat/completions in 0.404957 seconds
+2026-04-08 15:33:06 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:33:06 INFO     Retrying request to /chat/completions in 0.773560 seconds
+2026-04-08 15:33:08 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:33:08 WARNING  Retryable error (attempt 1/6), sleeping 1.7s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'stepfun/step-3.5-flash:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'StepFun', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:33:11 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:33:11 INFO     Retrying request to /chat/completions in 0.437193 seconds
+2026-04-08 15:33:13 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:33:13 INFO     Retrying request to /chat/completions in 0.983741 seconds
+2026-04-08 15:33:15 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:33:46 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:34:06 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:06 INFO     Retrying request to /chat/completions in 0.378658 seconds
+2026-04-08 15:34:08 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:08 INFO     Retrying request to /chat/completions in 0.768450 seconds
+2026-04-08 15:34:09 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:09 WARNING  Retryable error (attempt 1/6), sleeping 1.8s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775692800000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:34:12 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:12 INFO     Retrying request to /chat/completions in 0.418989 seconds
+2026-04-08 15:34:13 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:13 INFO     Retrying request to /chat/completions in 0.851532 seconds
+2026-04-08 15:34:15 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:15 WARNING  Retryable error (attempt 2/6), sleeping 2.5s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775687700000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:34:18 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:18 INFO     Retrying request to /chat/completions in 0.382278 seconds
+2026-04-08 15:34:19 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:19 INFO     Retrying request to /chat/completions in 0.831029 seconds
+2026-04-08 15:34:20 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:20 WARNING  Retryable error (attempt 3/6), sleeping 4.4s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'cognitivecomputations/dolphin-mistral-24b-venice-edition:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:34:26 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:26 INFO     Retrying request to /chat/completions in 0.441751 seconds
+2026-04-08 15:34:27 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:27 INFO     Retrying request to /chat/completions in 0.776340 seconds
+2026-04-08 15:34:35 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 15:34:50 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:50 INFO     Retrying request to /chat/completions in 0.475497 seconds
+2026-04-08 15:34:51 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:51 INFO     Retrying request to /chat/completions in 0.940100 seconds
+2026-04-08 15:34:53 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:53 WARNING  Retryable error (attempt 1/6), sleeping 1.7s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775692800000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:34:55 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:55 INFO     Retrying request to /chat/completions in 0.408168 seconds
+2026-04-08 15:34:56 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:56 INFO     Retrying request to /chat/completions in 0.949367 seconds
+2026-04-08 15:34:58 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:34:58 WARNING  Retryable error (attempt 2/6), sleeping 2.5s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775687700000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 15:35:02 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 15:35:02 INFO     Retrying request to /chat/completions in 0.472980 seconds
+2026-04-08 15:35:03 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+Traceback (most recent call last):
+  File "/home/shepard/git/llm-training/scripts/generate/generate_marketing.py", line 190, in <module>
+    main()
+  File "/home/shepard/git/llm-training/scripts/generate/generate_marketing.py", line 161, in main
+    response = generate(client, prompt, system=SYSTEM_PROMPT)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/scripts/generate/common.py", line 86, in generate
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Provider returned error', 'code': 402, 'metadata': {'raw': '{"error":"API key USD spend limit exceeded. Your account may still have USD balance, but this API key has reached its configured USD spending limit."}', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 16:17:04 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 16:17:04 INFO     Retrying request to /chat/completions in 0.408633 seconds
+2026-04-08 16:17:07 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+Traceback (most recent call last):
+  File "/home/shepard/git/llm-training/scripts/generate/generate_marketing.py", line 190, in <module>
+    main()
+  File "/home/shepard/git/llm-training/scripts/generate/generate_marketing.py", line 161, in main
+    response = generate(client, prompt, system=SYSTEM_PROMPT)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/scripts/generate/common.py", line 86, in generate
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Provider returned error', 'code': 402, 'metadata': {'raw': '{"error":"API key USD spend limit exceeded. Your account may still have USD balance, but this API key has reached its configured USD spending limit."}', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 17:17:03 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:20:24 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:21:15 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:21:17 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:21:26 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:21:29 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:22:26 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:22:48 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:26:51 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:26:52 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:29:19 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:30:14 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:30:21 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:30:37 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:30:43 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:36:47 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:36:56 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 17:37:16 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:02:34 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:08:32 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:08:35 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:08:56 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:09:08 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:09:11 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:09:17 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:09:25 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 404 Not Found"
+Traceback (most recent call last):
+  File "/home/shepard/git/llm-training/scripts/generate/generate_marketing.py", line 190, in <module>
+    main()
+  File "/home/shepard/git/llm-training/scripts/generate/generate_marketing.py", line 161, in main
+    response = generate(client, prompt, system=SYSTEM_PROMPT)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/scripts/generate/common.py", line 86, in generate
+    response = client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shepard/git/llm-training/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: Error code: 404 - {'error': {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '404 page not found\n', 'provider_name': 'Nvidia', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:17:04 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:17:04 INFO     Retrying request to /chat/completions in 0.400528 seconds
+2026-04-08 18:17:06 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:17:06 INFO     Retrying request to /chat/completions in 0.920892 seconds
+2026-04-08 18:17:08 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:17:08 WARNING  Retryable error (attempt 1/6), sleeping 1.7s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775779200000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:17:10 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:17:10 INFO     Retrying request to /chat/completions in 0.455920 seconds
+2026-04-08 18:17:11 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:17:11 INFO     Retrying request to /chat/completions in 0.893548 seconds
+2026-04-08 18:17:14 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:17:32 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:17:32 INFO     Retrying request to /chat/completions in 0.428218 seconds
+2026-04-08 18:17:33 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:17:33 INFO     Retrying request to /chat/completions in 0.868255 seconds
+2026-04-08 18:17:34 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:17:34 WARNING  Retryable error (attempt 1/6), sleeping 1.9s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775697480000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:17:37 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:17:37 INFO     Retrying request to /chat/completions in 0.379473 seconds
+2026-04-08 18:17:38 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:17:38 INFO     Retrying request to /chat/completions in 0.860055 seconds
+2026-04-08 18:17:40 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:17:40 WARNING  Retryable error (attempt 2/6), sleeping 2.5s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:17:44 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:18:23 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:18:23 INFO     Retrying request to /chat/completions in 0.432362 seconds
+2026-04-08 18:18:24 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:18:24 INFO     Retrying request to /chat/completions in 0.994741 seconds
+2026-04-08 18:18:26 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:18:26 WARNING  Retryable error (attempt 1/6), sleeping 1.7s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'cognitivecomputations/dolphin-mistral-24b-venice-edition:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:18:29 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:18:29 INFO     Retrying request to /chat/completions in 0.488984 seconds
+2026-04-08 18:18:30 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:18:30 INFO     Retrying request to /chat/completions in 0.986908 seconds
+2026-04-08 18:18:32 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:18:32 WARNING  Retryable error (attempt 2/6), sleeping 2.6s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'meta-llama/llama-3.2-3b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:18:35 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:18:35 INFO     Retrying request to /chat/completions in 0.391621 seconds
+2026-04-08 18:18:37 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:18:37 INFO     Retrying request to /chat/completions in 0.985314 seconds
+2026-04-08 18:18:38 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:18:38 WARNING  Retryable error (attempt 3/6), sleeping 5.0s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'qwen/qwen3-next-80b-a3b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:18:45 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:19:16 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:19:27 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:19:27 INFO     Retrying request to /chat/completions in 0.386339 seconds
+2026-04-08 18:19:28 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:19:28 INFO     Retrying request to /chat/completions in 0.912548 seconds
+2026-04-08 18:19:30 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:19:30 WARNING  Retryable error (attempt 1/6), sleeping 1.8s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775697600000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:19:32 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:19:32 INFO     Retrying request to /chat/completions in 0.395582 seconds
+2026-04-08 18:19:33 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:19:33 INFO     Retrying request to /chat/completions in 0.809945 seconds
+2026-04-08 18:19:35 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:19:35 WARNING  Retryable error (attempt 2/6), sleeping 2.1s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775697600000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:19:38 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:19:38 INFO     Retrying request to /chat/completions in 0.436119 seconds
+2026-04-08 18:19:39 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:19:39 INFO     Retrying request to /chat/completions in 0.788944 seconds
+2026-04-08 18:19:40 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:19:40 WARNING  Retryable error (attempt 3/6), sleeping 4.1s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775697600000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:19:44 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:19:44 INFO     Retrying request to /chat/completions in 0.464720 seconds
+2026-04-08 18:19:46 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:19:58 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:19:58 INFO     Retrying request to /chat/completions in 0.395218 seconds
+2026-04-08 18:20:00 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:00 INFO     Retrying request to /chat/completions in 0.832978 seconds
+2026-04-08 18:20:01 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:01 WARNING  Retryable error (attempt 1/6), sleeping 2.0s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775697660000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:20:04 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:04 INFO     Retrying request to /chat/completions in 0.398345 seconds
+2026-04-08 18:20:05 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:05 INFO     Retrying request to /chat/completions in 0.763975 seconds
+2026-04-08 18:20:07 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:07 WARNING  Retryable error (attempt 2/6), sleeping 2.9s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775697660000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:20:10 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:10 INFO     Retrying request to /chat/completions in 0.462715 seconds
+2026-04-08 18:20:12 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:12 INFO     Retrying request to /chat/completions in 0.793733 seconds
+2026-04-08 18:20:14 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:14 WARNING  Retryable error (attempt 3/6), sleeping 4.2s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:20:19 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:19 INFO     Retrying request to /chat/completions in 0.442882 seconds
+2026-04-08 18:20:20 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:20 INFO     Retrying request to /chat/completions in 0.815616 seconds
+2026-04-08 18:20:22 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:22 WARNING  Retryable error (attempt 4/6), sleeping 8.6s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775697660000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:20:31 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:31 INFO     Retrying request to /chat/completions in 0.434574 seconds
+2026-04-08 18:20:32 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:32 INFO     Retrying request to /chat/completions in 0.885689 seconds
+2026-04-08 18:20:34 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:34 WARNING  Retryable error (attempt 5/6), sleeping 16.6s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'nousresearch/hermes-3-llama-3.1-405b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:20:53 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:20:53 INFO     Retrying request to /chat/completions in 0.399665 seconds
+2026-04-08 18:20:58 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:23:10 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:10 INFO     Retrying request to /chat/completions in 0.396111 seconds
+2026-04-08 18:23:12 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:12 INFO     Retrying request to /chat/completions in 0.982876 seconds
+2026-04-08 18:23:14 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:14 WARNING  Retryable error (attempt 1/6), sleeping 1.9s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775779200000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:23:16 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:16 INFO     Retrying request to /chat/completions in 0.463788 seconds
+2026-04-08 18:23:17 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:17 INFO     Retrying request to /chat/completions in 0.802855 seconds
+2026-04-08 18:23:19 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:19 WARNING  Retryable error (attempt 2/6), sleeping 2.2s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'qwen/qwen3-next-80b-a3b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:23:22 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:23:35 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:35 INFO     Retrying request to /chat/completions in 0.462438 seconds
+2026-04-08 18:23:38 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:38 INFO     Retrying request to /chat/completions in 0.966599 seconds
+2026-04-08 18:23:40 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:40 WARNING  Retryable error (attempt 1/6), sleeping 1.0s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775697840000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:23:42 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:42 INFO     Retrying request to /chat/completions in 0.469242 seconds
+2026-04-08 18:23:43 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:43 INFO     Retrying request to /chat/completions in 0.872909 seconds
+2026-04-08 18:23:45 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:45 WARNING  Retryable error (attempt 2/6), sleeping 2.6s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775697840000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:23:48 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:48 INFO     Retrying request to /chat/completions in 0.379069 seconds
+2026-04-08 18:23:50 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:23:50 INFO     Retrying request to /chat/completions in 0.792548 seconds
+2026-04-08 18:23:52 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:24:25 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:26:03 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:03 INFO     Retrying request to /chat/completions in 0.493756 seconds
+2026-04-08 18:26:05 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:05 INFO     Retrying request to /chat/completions in 0.753607 seconds
+2026-04-08 18:26:07 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:07 WARNING  Retryable error (attempt 1/6), sleeping 1.4s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775779200000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:26:09 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:09 INFO     Retrying request to /chat/completions in 0.484226 seconds
+2026-04-08 18:26:10 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:10 INFO     Retrying request to /chat/completions in 0.837197 seconds
+2026-04-08 18:26:12 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:12 WARNING  Retryable error (attempt 2/6), sleeping 2.4s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'cognitivecomputations/dolphin-mistral-24b-venice-edition:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:26:15 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:15 INFO     Retrying request to /chat/completions in 0.447973 seconds
+2026-04-08 18:26:16 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:16 INFO     Retrying request to /chat/completions in 0.953503 seconds
+2026-04-08 18:26:18 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:18 WARNING  Retryable error (attempt 3/6), sleeping 4.8s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775698020000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:26:24 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-08 18:26:40 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:40 INFO     Retrying request to /chat/completions in 0.432977 seconds
+2026-04-08 18:26:41 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:41 INFO     Retrying request to /chat/completions in 0.895754 seconds
+2026-04-08 18:26:42 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:42 WARNING  Retryable error (attempt 1/6), sleeping 1.8s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775698020000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:26:45 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:45 INFO     Retrying request to /chat/completions in 0.467868 seconds
+2026-04-08 18:26:47 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:47 INFO     Retrying request to /chat/completions in 0.964416 seconds
+2026-04-08 18:26:48 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:48 WARNING  Retryable error (attempt 2/6), sleeping 2.8s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775698020000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:26:52 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:52 INFO     Retrying request to /chat/completions in 0.409091 seconds
+2026-04-08 18:26:53 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:53 INFO     Retrying request to /chat/completions in 0.800295 seconds
+2026-04-08 18:26:54 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:26:54 WARNING  Retryable error (attempt 3/6), sleeping 4.6s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775698020000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:27:05 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 504 Gateway Timeout"
+2026-04-08 18:27:05 INFO     Retrying request to /chat/completions in 0.497129 seconds
+2026-04-08 18:27:06 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:27:06 INFO     Retrying request to /chat/completions in 0.785748 seconds
+2026-04-08 18:27:07 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:27:07 WARNING  Retryable error (attempt 4/6), sleeping 8.2s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775698080000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:27:17 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:27:17 INFO     Retrying request to /chat/completions in 0.493271 seconds
+2026-04-08 18:27:19 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:27:19 INFO     Retrying request to /chat/completions in 0.961329 seconds
+2026-04-08 18:27:21 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:27:21 WARNING  Retryable error (attempt 5/6), sleeping 16.9s: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775779200000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:27:39 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:27:39 INFO     Retrying request to /chat/completions in 0.475882 seconds
+2026-04-08 18:27:41 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:27:41 INFO     Retrying request to /chat/completions in 0.819720 seconds
+2026-04-08 18:27:43 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:27:43 WARNING  Retryable error (attempt 6/6), sleeping 32.8s: Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'qwen/qwen3-coder:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:28:17 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:28:17 INFO     Retrying request to /chat/completions in 0.493031 seconds
+2026-04-08 18:28:19 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:28:19 INFO     Retrying request to /chat/completions in 0.855557 seconds
+2026-04-08 18:28:20 INFO     HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-08 18:28:20 ERROR    All 6 retries exhausted: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1775698140000'}, 'provider_name': None}}, 'user_id': 'user_3C14WwJ2Fk1Tm6bBZeGJUNgtyZP'}
+2026-04-08 18:28:20 WARNING  Rate limited at index 90, stopping. Will resume on next run.
+2026-04-08 18:28:20 INFO     [store-marketing/generate] paused (90/1666)

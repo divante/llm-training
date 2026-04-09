@@ -145,52 +145,38 @@ def _strip_code_fences(text: str) -> str:
 _VALID_ESCAPES = frozenset('"\\/bfnrtu')
 
 
-def repair_json(raw: str | None) -> list[dict[str, Any]] | None:
-    """Best-effort repair of malformed JSON arrays from LLM output.
+def _fix_escape_sequences(text: str) -> str:
+    """Fix invalid escape sequences in JSON text.
 
-    Handles:
-    - Markdown code fences
-    - Invalid escape sequences (``\\N``, ``\\s``, etc.)
-    - Unescaped double quotes inside JSON string values (e.g. C++ #include)
-    - Truncated responses (salvages complete objects before the cutoff)
-
-    Returns the parsed list on success, or ``None`` if unrecoverable.
+    JSON only allows: \" \\\\ \\/ \\b \\f \\n \\r \\t \\uXXXX
+    LLMs produce things like \\N \\s \\c — double-escape them.
     """
-    if not raw:
-        return None
-
-    text = _strip_code_fences(raw)
-
-    # ── Fix invalid escape sequences ──
-    # JSON only allows: \" \\ \/ \b \f \n \r \t \uXXXX
-    # LLMs produce things like \N \s \c — double-escape them.
-    fixed_escapes: list[str] = []
+    out: list[str] = []
     i = 0
     while i < len(text):
         if text[i] == '\\' and i + 1 < len(text):
             nxt = text[i + 1]
             if nxt not in _VALID_ESCAPES:
-                fixed_escapes.append('\\\\')  # turn \ into \\
+                out.append('\\\\')  # turn \ into \\
             else:
-                fixed_escapes.append('\\')
-            fixed_escapes.append(nxt)
+                out.append('\\')
+            out.append(nxt)
             i += 2
         else:
-            fixed_escapes.append(text[i])
+            out.append(text[i])
             i += 1
-    text = "".join(fixed_escapes)
+    return "".join(out)
 
-    # ── Fast path: try clean parse ──
-    try:
-        data = json.loads(text)
-        if isinstance(data, list):
-            return data
-    except json.JSONDecodeError:
-        pass
 
-    # ── Character-level quote repair ──
-    # Walk through the text, track whether we're inside a JSON string,
-    # and escape interior double quotes that aren't structural.
+def _repair_quotes_and_control_chars(text: str) -> str:
+    """Walk through JSON text, escape interior quotes and raw control chars.
+
+    Uses a lookahead heuristic: a quote is "structural" (closes a JSON string)
+    if followed by whitespace then a JSON structural character. The key insight
+    is that after a closing quote the next non-whitespace must be one of:
+        , } ] :  "  (comma, brace-close, bracket-close, colon, or next string)
+    Anything else means the quote is interior content and should be escaped.
+    """
     repaired: list[str] = []
     i = 0
     in_string = False
@@ -208,15 +194,37 @@ def repair_json(raw: str | None) -> list[dict[str, Any]] | None:
                 i += 2
                 continue
             elif c == '"':
-                # Structural close-quote?  Look at what follows (skip whitespace).
+                # Structural close-quote? Look at what follows (skip whitespace).
                 rest = text[i + 1:].lstrip()
                 if not rest or rest[0] in ',}]:':
                     repaired.append(c)
                     in_string = False
                 elif rest[0] == '"':
-                    # end-of-value, start-of-key
-                    repaired.append(c)
-                    in_string = False
+                    # Could be end-of-value→start-of-key, OR an interior quote
+                    # followed by more quoted text. Disambiguate: if the next
+                    # quote is followed by a colon (after optional whitespace),
+                    # this is a key boundary. Otherwise it's interior.
+                    after_next_quote = rest[1:].lstrip()
+                    if after_next_quote and after_next_quote[0] == ':':
+                        # Looks like "value" "key": — but missing comma.
+                        # Close string, let the parser handle the missing comma.
+                        repaired.append(c)
+                        in_string = False
+                    else:
+                        # Check deeper: scan for the pattern ": after the next quote
+                        # to decide if this is a field boundary
+                        next_quote_pos = rest.find('"', 1)
+                        if next_quote_pos > 0:
+                            between = rest[1:next_quote_pos].strip()
+                            after = rest[next_quote_pos + 1:].lstrip()
+                            if not between and after and after[0] == ':':
+                                repaired.append(c)
+                                in_string = False
+                            else:
+                                repaired.append('\\"')
+                        else:
+                            repaired.append(c)
+                            in_string = False
                 else:
                     repaired.append('\\"')  # interior quote → escape it
             elif c == '\n':
@@ -229,37 +237,36 @@ def repair_json(raw: str | None) -> list[dict[str, Any]] | None:
                 repaired.append(c)
         i += 1
 
-    repaired_text = "".join(repaired)
-    try:
-        data = json.loads(repaired_text)
-        if isinstance(data, list):
-            return data
-    except json.JSONDecodeError:
-        pass
+    return "".join(repaired)
 
-    # ── Salvage truncated arrays ──
-    # Find the last complete top-level object and close the array there.
+
+def _salvage_truncated(text: str) -> list[dict[str, Any]] | None:
+    """Salvage complete objects from a truncated JSON array."""
     last_complete = -1
     brace_depth = 0
     in_str = False
-    for i, c in enumerate(repaired_text):
+    i = 0
+    while i < len(text):
+        c = text[i]
         if in_str:
-            if c == '\\' and i + 1 < len(repaired_text):
+            if c == '\\' and i + 1 < len(text):
+                i += 2
                 continue
             if c == '"':
                 in_str = False
-            continue
-        if c == '"':
-            in_str = True
-        elif c == '{':
-            brace_depth += 1
-        elif c == '}':
-            brace_depth -= 1
-            if brace_depth == 0:
-                last_complete = i
+        else:
+            if c == '"':
+                in_str = True
+            elif c == '{':
+                brace_depth += 1
+            elif c == '}':
+                brace_depth -= 1
+                if brace_depth == 0:
+                    last_complete = i
+        i += 1
 
     if last_complete > 0:
-        candidate = repaired_text[:last_complete + 1].rstrip().rstrip(',')
+        candidate = text[:last_complete + 1].rstrip().rstrip(',')
         if not candidate.lstrip().startswith('['):
             candidate = '[' + candidate
         candidate = candidate.rstrip().rstrip(',') + ']'
@@ -269,6 +276,57 @@ def repair_json(raw: str | None) -> list[dict[str, Any]] | None:
                 return data
         except json.JSONDecodeError:
             pass
+
+    return None
+
+
+def _parse_result(text: str) -> list[dict[str, Any]] | dict[str, Any] | None:
+    """Try to parse JSON text as a list or single object."""
+    try:
+        data = json.loads(text)
+        if isinstance(data, (list, dict)):
+            return data
+    except json.JSONDecodeError:
+        pass
+    return None
+
+
+def repair_json(raw: str | None) -> list[dict[str, Any]] | dict[str, Any] | None:
+    """Best-effort repair of malformed JSON from LLM output.
+
+    Handles:
+    - Markdown code fences
+    - Invalid escape sequences (``\\N``, ``\\s``, etc.)
+    - Unescaped double quotes inside JSON string values (e.g. C++ #include)
+    - Raw newlines/tabs inside JSON strings
+    - Truncated responses (salvages complete objects before the cutoff)
+
+    Returns the parsed result (list or dict) on success, or ``None`` if
+    unrecoverable.
+    """
+    if not raw:
+        return None
+
+    text = _strip_code_fences(raw)
+
+    # ── Fix invalid escape sequences ──
+    text = _fix_escape_sequences(text)
+
+    # ── Fast path: try clean parse ──
+    result = _parse_result(text)
+    if result is not None:
+        return result
+
+    # ── Character-level quote + control char repair ──
+    repaired_text = _repair_quotes_and_control_chars(text)
+    result = _parse_result(repaired_text)
+    if result is not None:
+        return result
+
+    # ── Salvage truncated arrays ──
+    result = _salvage_truncated(repaired_text)
+    if result is not None:
+        return result
 
     return None
 

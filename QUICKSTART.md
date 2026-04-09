@@ -70,14 +70,21 @@ uv run scripts/generate/generate_engine_docs.py --skip-glyph
 
 These are fully synthetic — no scraping needed. Run them in parallel.
 
-LLM_BASE_URL=https://openrouter.ai/api/v1 LLM_MODEL=openrouter/free LLM_API_KEY=$OPENROUTER_API_KEY uv run scripts/generate/generate_plans.py --target 7500
 
 ```bash
 # Terminal A — project plans (~10-14h)
 uv run scripts/generate/generate_plans.py --target 7500
+# OR
+export LLM_BASE_URL=http://192.168.50.233:11434/v1 
+export LLM_MODEL=qwen3.5:9b 
+export LLM_API_KEY=unused 
+nohup uv run scripts/generate/generate_plans.py --target 7500 &
 
 # Terminal B — store marketing (~3-4h)
 # Note: populate Steam AppIDs in the script first, or provide scraped data
+export LLM_BASE_URL=${OPENROUTER_BASE_URL}
+export LLM_MODEL=openrouter/free
+export LLM_API_KEY=${OPENROUTER_API_KEY}
 uv run scripts/generate/generate_marketing.py --target 5000
 ```
 

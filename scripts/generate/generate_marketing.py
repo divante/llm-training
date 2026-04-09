@@ -25,6 +25,7 @@ from common import (
     get_client,
     log,
     log_progress,
+    repair_json,
     write_jsonl,
 )
 
@@ -148,6 +149,7 @@ def main():
     client = get_client()
     target_calls = args.target // 3
 
+    rate_limited = False
     for i in range(done, target_calls):
         desc = descriptions[i % len(descriptions)]
         prompt = GENERATION_PROMPT.format(
@@ -155,17 +157,33 @@ def main():
             genre=desc["genre"],
             description=desc["description"][:1500],
         )
-        response = generate(client, prompt, system=SYSTEM_PROMPT)
+        try:
+            response = generate(client, prompt, system=SYSTEM_PROMPT)
+        except Exception as e:
+            status = getattr(e, "status_code", None)
+            if status == 429:
+                log.warning("Rate limited at index %d, stopping. Will resume on next run.", i)
+                rate_limited = True
+                break
+            raise
+        parsed = repair_json(response)
         append_jsonl(raw_output, {
             "index": i,
             "source_app_id": desc.get("app_id"),
             "response": response,
+            "parsed": parsed is not None,
+            "pair_count": len(parsed) if isinstance(parsed, list) else (1 if parsed else 0),
         })
         if (i + 1) % 100 == 0:
             log_progress(DATASET, "generate", "running", progress=f"{i + 1}/{target_calls}")
 
-    log_progress(DATASET, "generate", "done", records=count_lines(raw_output))
-    log.info("store-marketing generation complete")
+    final_count = count_lines(raw_output)
+    if rate_limited:
+        log_progress(DATASET, "generate", "paused", records=final_count,
+                     progress=f"{final_count}/{target_calls}")
+    else:
+        log_progress(DATASET, "generate", "done", records=final_count)
+        log.info("store-marketing generation complete")
 
 
 if __name__ == "__main__":
