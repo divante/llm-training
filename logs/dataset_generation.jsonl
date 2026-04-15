@@ -1,109 +1,146 @@
-{"timestamp": "2026-04-06T00:26:19.976276+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "0/7500"}
-{"timestamp": "2026-04-06T17:57:47.924145+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T18:18:32.890777+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1/33691"}
-{"timestamp": "2026-04-06T18:27:24.565343+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T18:28:40.481186+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T18:30:41.412230+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T18:31:08.410535+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T18:43:29.571123+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T19:15:48.680060+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T19:19:12.571327+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T19:21:04.368105+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T19:23:50.628780+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T19:26:54.183349+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T19:29:41.178427+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T19:31:42.074812+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T19:41:26.663839+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/33691"}
-{"timestamp": "2026-04-06T20:36:08.385369+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "0/4490"}
-{"timestamp": "2026-04-06T22:16:43.267137+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1/4490"}
-{"timestamp": "2026-04-06T22:18:50.825239+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2/4490"}
-{"timestamp": "2026-04-06T23:07:59.284350+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "50/4490"}
-{"timestamp": "2026-04-06T23:59:00.368854+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "100/4490"}
-{"timestamp": "2026-04-07T00:45:38.895001+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "150/4490"}
-{"timestamp": "2026-04-07T01:38:13.999470+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "200/4490"}
-{"timestamp": "2026-04-07T02:32:20.027857+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "250/4490"}
-{"timestamp": "2026-04-07T03:18:32.895816+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "300/4490"}
-{"timestamp": "2026-04-07T04:05:12.632157+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "350/4490"}
-{"timestamp": "2026-04-07T04:48:16.202286+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "400/4490"}
-{"timestamp": "2026-04-07T05:36:16.479773+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "450/4490"}
-{"timestamp": "2026-04-07T06:20:44.322799+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "0/7500"}
-{"timestamp": "2026-04-07T06:21:05.095506+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "0/7500"}
-{"timestamp": "2026-04-07T06:21:50.453529+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "0/7500"}
-{"timestamp": "2026-04-07T06:22:45.245000+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "500/4490"}
-{"timestamp": "2026-04-07T06:24:02.754816+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "0/7500"}
-{"timestamp": "2026-04-07T06:27:44.021864+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "503/4490"}
-{"timestamp": "2026-04-07T06:27:58.965702+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "503/4490"}
-{"timestamp": "2026-04-07T06:28:36.066936+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "503/4490"}
-{"timestamp": "2026-04-07T07:21:18.039700+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "550/4490"}
-{"timestamp": "2026-04-07T08:12:37.717788+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "600/4490"}
-{"timestamp": "2026-04-07T09:00:54.377339+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "650/4490"}
-{"timestamp": "2026-04-07T09:49:17.158106+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "700/4490"}
-{"timestamp": "2026-04-07T10:32:47.617115+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "750/4490"}
-{"timestamp": "2026-04-07T11:16:04.344830+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "800/4490"}
-{"timestamp": "2026-04-07T12:01:10.183315+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "850/4490"}
-{"timestamp": "2026-04-07T12:43:53.939846+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "900/4490"}
-{"timestamp": "2026-04-07T13:22:28.008429+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "950/4490"}
-{"timestamp": "2026-04-07T14:05:54.171780+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1000/4490"}
-{"timestamp": "2026-04-07T14:46:13.501208+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1050/4490"}
-{"timestamp": "2026-04-07T15:31:17.272846+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1100/4490"}
-{"timestamp": "2026-04-07T16:13:55.141606+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1150/4490"}
-{"timestamp": "2026-04-07T16:51:57.621684+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1189/4490"}
-{"timestamp": "2026-04-07T17:03:50.988375+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1200/4490"}
-{"timestamp": "2026-04-07T17:09:17.149037+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "1/7500"}
-{"timestamp": "2026-04-07T17:52:22.333377+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1250/4490"}
-{"timestamp": "2026-04-07T17:57:40.458117+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "21/7500"}
-{"timestamp": "2026-04-07T18:46:54.015307+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1300/4490"}
-{"timestamp": "2026-04-07T19:25:48.731080+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1350/4490"}
-{"timestamp": "2026-04-07T20:12:09.355363+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1400/4490"}
-{"timestamp": "2026-04-07T21:05:57.892226+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1450/4490"}
-{"timestamp": "2026-04-07T21:49:39.719031+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1500/4490"}
-{"timestamp": "2026-04-07T22:39:24.234457+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1550/4490"}
-{"timestamp": "2026-04-07T23:28:05.271311+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1600/4490"}
-{"timestamp": "2026-04-08T00:03:12.736028+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1650/4490"}
-{"timestamp": "2026-04-08T00:35:55.244549+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1700/4490"}
-{"timestamp": "2026-04-08T01:25:48.803396+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1750/4490"}
-{"timestamp": "2026-04-08T02:12:05.626239+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1800/4490"}
-{"timestamp": "2026-04-08T02:58:15.120383+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1850/4490"}
-{"timestamp": "2026-04-08T03:57:52.893304+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1900/4490"}
-{"timestamp": "2026-04-08T05:03:36.327424+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "1950/4490"}
-{"timestamp": "2026-04-08T05:57:56.538492+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2000/4490"}
-{"timestamp": "2026-04-08T06:49:04.677474+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2050/4490"}
-{"timestamp": "2026-04-08T07:36:55.000087+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2100/4490"}
-{"timestamp": "2026-04-08T08:25:44.871803+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2150/4490"}
-{"timestamp": "2026-04-08T09:13:26.187954+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2200/4490"}
-{"timestamp": "2026-04-08T09:53:58.979994+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2250/4490"}
-{"timestamp": "2026-04-08T10:40:16.443919+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2300/4490"}
-{"timestamp": "2026-04-08T11:23:15.091588+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2350/4490"}
-{"timestamp": "2026-04-08T12:03:29.040672+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2400/4490"}
-{"timestamp": "2026-04-08T12:48:25.407296+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2450/4490"}
-{"timestamp": "2026-04-08T13:37:59.150879+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2500/4490"}
-{"timestamp": "2026-04-08T14:23:21.400616+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "27/7500"}
-{"timestamp": "2026-04-08T14:23:39.340616+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "27/7500"}
-{"timestamp": "2026-04-08T14:25:40.969798+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "27/7500"}
-{"timestamp": "2026-04-08T14:26:55.202616+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2550/4490"}
-{"timestamp": "2026-04-08T15:06:42.135260+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "100/7500"}
-{"timestamp": "2026-04-08T15:13:07.494009+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2600/4490"}
-{"timestamp": "2026-04-08T16:03:45.813568+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2650/4490"}
-{"timestamp": "2026-04-08T16:40:44.349154+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "0/7500"}
-{"timestamp": "2026-04-08T16:42:06.234081+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "0/7500"}
-{"timestamp": "2026-04-08T16:46:00.785860+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "4/7500"}
-{"timestamp": "2026-04-08T16:48:12.392291+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "0/7500"}
-{"timestamp": "2026-04-08T16:49:52.223903+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "2/7500"}
-{"timestamp": "2026-04-08T16:51:04.174992+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2700/4490"}
-{"timestamp": "2026-04-08T17:10:01.345752+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2710/4490"}
-{"timestamp": "2026-04-08T17:10:28.212426+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "0/7500"}
-{"timestamp": "2026-04-08T17:50:25.320386+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2750/4490"}
-{"timestamp": "2026-04-08T18:39:47.692946+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2800/4490"}
-{"timestamp": "2026-04-08T19:19:47.808493+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2850/4490"}
-{"timestamp": "2026-04-08T20:02:07.564095+00:00", "dataset": "store-marketing", "phase": "scrape", "status": "done", "records": 107}
-{"timestamp": "2026-04-08T20:02:51.650935+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2900/4490"}
-{"timestamp": "2026-04-08T20:27:04.865063+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "100/7500"}
-{"timestamp": "2026-04-08T20:50:51.625270+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "2950/4490"}
-{"timestamp": "2026-04-08T21:42:49.545939+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "3000/4490"}
-{"timestamp": "2026-04-08T22:31:29.571255+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "3050/4490"}
-{"timestamp": "2026-04-08T23:17:00.729224+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "3100/4490"}
-{"timestamp": "2026-04-08T23:30:21.997331+00:00", "dataset": "project-plans", "phase": "generate", "status": "running", "progress": "200/7500"}
-{"timestamp": "2026-04-09T00:03:48.511905+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "3150/4490"}
-{"timestamp": "2026-04-09T00:40:46.089214+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "3200/4490"}
-{"timestamp": "2026-04-09T01:23:12.901694+00:00", "dataset": "game-engine-docs", "phase": "generate_qa/unreal", "status": "running", "progress": "3250/4490"}
-{"timestamp": "2026-04-09T01:28:20.934878+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 90, "progress": "90/1666"}
+{"timestamp": "2026-04-10T22:39:34.306264+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "400/15000"}
+{"timestamp": "2026-04-10T23:18:46.843917+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 111, "progress": "111/1666"}
+{"timestamp": "2026-04-10T23:33:10.358663+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "450/15000"}
+{"timestamp": "2026-04-11T00:58:50.485226+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T01:18:39.125199+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T02:18:44.074827+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T03:18:37.463987+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T04:18:37.323913+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T05:18:39.602519+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T07:18:36.441533+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T09:18:38.110049+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T10:18:37.040561+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T11:18:35.698929+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T13:18:37.454801+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T15:18:39.495951+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T16:18:36.225438+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T17:19:58.360338+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "490/15000"}
+{"timestamp": "2026-04-11T20:18:39.873509+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T21:18:39.016130+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T21:35:43.097152+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "490/15000"}
+{"timestamp": "2026-04-11T21:35:51.527246+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "490/15000"}
+{"timestamp": "2026-04-11T21:47:29.359069+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "500/15000"}
+{"timestamp": "2026-04-11T22:18:37.528630+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 138, "progress": "138/1666"}
+{"timestamp": "2026-04-11T22:41:30.919138+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "550/15000"}
+{"timestamp": "2026-04-11T23:36:19.233221+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "600/15000"}
+{"timestamp": "2026-04-12T00:28:51.288745+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "650/15000"}
+{"timestamp": "2026-04-12T00:52:18.127408+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 184, "progress": "184/1666"}
+{"timestamp": "2026-04-12T01:17:38.119799+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "700/15000"}
+{"timestamp": "2026-04-12T01:21:01.931741+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 186, "progress": "186/1666"}
+{"timestamp": "2026-04-12T02:09:32.887982+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "750/15000"}
+{"timestamp": "2026-04-12T02:19:22.706922+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 188, "progress": "188/1666"}
+{"timestamp": "2026-04-12T03:04:00.940013+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "800/15000"}
+{"timestamp": "2026-04-12T03:20:55.276719+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 190, "progress": "190/1666"}
+{"timestamp": "2026-04-12T03:55:24.081137+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "850/15000"}
+{"timestamp": "2026-04-12T04:51:53.711451+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "900/15000"}
+{"timestamp": "2026-04-12T05:47:23.895177+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "950/15000"}
+{"timestamp": "2026-04-12T06:18:39.607079+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 190, "progress": "190/1666"}
+{"timestamp": "2026-04-12T06:39:49.656976+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1000/15000"}
+{"timestamp": "2026-04-12T07:18:40.628578+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 190, "progress": "190/1666"}
+{"timestamp": "2026-04-12T07:29:02.713278+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1050/15000"}
+{"timestamp": "2026-04-12T08:18:38.095412+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 190, "progress": "190/1666"}
+{"timestamp": "2026-04-12T09:18:37.518647+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 190, "progress": "190/1666"}
+{"timestamp": "2026-04-12T10:18:39.018626+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 190, "progress": "190/1666"}
+{"timestamp": "2026-04-12T13:18:34.963860+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 190, "progress": "190/1666"}
+{"timestamp": "2026-04-12T14:21:04.449776+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 191, "progress": "191/1666"}
+{"timestamp": "2026-04-12T15:18:37.969123+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 191, "progress": "191/1666"}
+{"timestamp": "2026-04-12T16:18:37.538661+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 191, "progress": "191/1666"}
+{"timestamp": "2026-04-12T18:18:44.708995+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 191, "progress": "191/1666"}
+{"timestamp": "2026-04-12T18:47:51.919928+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1091/15000"}
+{"timestamp": "2026-04-12T21:20:53.635535+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 192, "progress": "192/1666"}
+{"timestamp": "2026-04-12T21:40:51.899153+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1091/15000"}
+{"timestamp": "2026-04-12T21:50:58.918672+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1100/15000"}
+{"timestamp": "2026-04-12T22:00:44.583701+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1103/15000"}
+{"timestamp": "2026-04-12T22:15:08.722942+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1116/15000"}
+{"timestamp": "2026-04-12T22:35:07.402164+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1118/15000"}
+{"timestamp": "2026-04-12T23:09:48.819272+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1150/15000"}
+{"timestamp": "2026-04-12T23:18:39.675584+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 192, "progress": "192/1666"}
+{"timestamp": "2026-04-13T00:32:42.459357+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "200/1666"}
+{"timestamp": "2026-04-13T01:13:05.735197+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 248, "progress": "248/1666"}
+{"timestamp": "2026-04-13T01:44:08.047249+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 272, "progress": "272/1666"}
+{"timestamp": "2026-04-13T02:25:24.852374+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 281, "progress": "281/1666"}
+{"timestamp": "2026-04-13T03:28:04.698641+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T05:08:02.615698+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1163/15000"}
+{"timestamp": "2026-04-13T05:18:42.913864+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T05:30:22.021491+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1173/15000"}
+{"timestamp": "2026-04-13T05:30:27.729705+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1173/15000"}
+{"timestamp": "2026-04-13T05:59:23.332221+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1200/15000"}
+{"timestamp": "2026-04-13T06:18:43.665708+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T06:55:38.669762+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1250/15000"}
+{"timestamp": "2026-04-13T07:18:36.841782+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T07:47:10.717375+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1300/15000"}
+{"timestamp": "2026-04-13T08:18:39.371156+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T09:18:39.991342+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T10:18:38.297064+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T12:18:35.928681+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T13:18:38.369831+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T14:18:43.118065+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T15:18:41.475000+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T16:18:07.697000+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1340/15000"}
+{"timestamp": "2026-04-13T16:29:38.527484+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1350/15000"}
+{"timestamp": "2026-04-13T17:29:11.245970+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1400/15000"}
+{"timestamp": "2026-04-13T18:18:46.068169+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T18:24:53.825561+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1450/15000"}
+{"timestamp": "2026-04-13T19:18:13.741148+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1500/15000"}
+{"timestamp": "2026-04-13T19:18:39.549725+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T20:09:53.168142+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1550/15000"}
+{"timestamp": "2026-04-13T20:18:38.836275+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T21:05:17.247161+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1600/15000"}
+{"timestamp": "2026-04-13T21:18:43.197217+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T21:58:36.722247+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1650/15000"}
+{"timestamp": "2026-04-13T22:18:41.067409+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T22:48:34.629555+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1700/15000"}
+{"timestamp": "2026-04-13T23:18:40.964137+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 293, "progress": "293/1666"}
+{"timestamp": "2026-04-13T23:43:44.996242+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1750/15000"}
+{"timestamp": "2026-04-14T00:19:54.384072+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "300/1666"}
+{"timestamp": "2026-04-14T00:40:27.558325+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1800/15000"}
+{"timestamp": "2026-04-14T00:54:49.457233+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 329, "progress": "329/1666"}
+{"timestamp": "2026-04-14T01:24:19.594795+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 338, "progress": "338/1666"}
+{"timestamp": "2026-04-14T01:36:44.818613+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1850/15000"}
+{"timestamp": "2026-04-14T02:20:10.989393+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 340, "progress": "340/1666"}
+{"timestamp": "2026-04-14T02:27:58.030415+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1900/15000"}
+{"timestamp": "2026-04-14T03:23:50.673324+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "1950/15000"}
+{"timestamp": "2026-04-14T04:18:42.960277+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 341, "progress": "341/1666"}
+{"timestamp": "2026-04-14T04:19:28.504780+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2000/15000"}
+{"timestamp": "2026-04-14T05:15:44.321118+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2050/15000"}
+{"timestamp": "2026-04-14T06:08:18.705043+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2100/15000"}
+{"timestamp": "2026-04-14T06:18:38.017924+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T06:59:46.329302+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2150/15000"}
+{"timestamp": "2026-04-14T07:54:54.281423+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2200/15000"}
+{"timestamp": "2026-04-14T08:18:53.035062+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T08:47:18.012673+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2250/15000"}
+{"timestamp": "2026-04-14T09:18:37.035061+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T09:32:01.593464+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2300/15000"}
+{"timestamp": "2026-04-14T10:18:34.424126+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T10:24:19.007674+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2350/15000"}
+{"timestamp": "2026-04-14T11:18:40.571417+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T11:20:43.769048+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2400/15000"}
+{"timestamp": "2026-04-14T12:16:51.959182+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2450/15000"}
+{"timestamp": "2026-04-14T12:18:35.765870+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T13:12:11.546769+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2500/15000"}
+{"timestamp": "2026-04-14T13:18:37.472587+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T14:09:38.528590+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2550/15000"}
+{"timestamp": "2026-04-14T14:18:36.212450+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T15:08:33.681482+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2600/15000"}
+{"timestamp": "2026-04-14T15:18:42.752799+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T16:04:59.181456+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2650/15000"}
+{"timestamp": "2026-04-14T17:18:39.187457+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T17:34:52.030835+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2657/15000"}
+{"timestamp": "2026-04-14T18:18:42.860936+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T18:26:01.075741+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2700/15000"}
+{"timestamp": "2026-04-14T19:18:37.336315+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T19:31:44.847535+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2750/15000"}
+{"timestamp": "2026-04-14T20:18:37.417440+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T20:32:02.254966+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2800/15000"}
+{"timestamp": "2026-04-14T21:31:26.860896+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2850/15000"}
+{"timestamp": "2026-04-14T22:18:40.199951+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T22:45:33.952493+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2900/15000"}
+{"timestamp": "2026-04-14T23:18:36.237707+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 342, "progress": "342/1666"}
+{"timestamp": "2026-04-14T23:44:58.582216+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2950/15000"}
+{"timestamp": "2026-04-15T01:42:59.280179+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 378, "progress": "378/1666"}
+{"timestamp": "2026-04-15T02:24:35.703942+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 390, "progress": "390/1666"}
+{"timestamp": "2026-04-15T03:20:20.910305+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 392, "progress": "392/1666"}
+{"timestamp": "2026-04-15T05:54:52.679711+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "2994/15000"}
+{"timestamp": "2026-04-15T06:00:53.506883+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "3000/15000"}
+{"timestamp": "2026-04-15T06:18:39.267460+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 392, "progress": "392/1666"}
+{"timestamp": "2026-04-15T06:25:55.994964+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "3022/15000"}

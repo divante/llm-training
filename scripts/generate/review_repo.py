@@ -107,10 +107,13 @@ def review_repo(repo_url: str, engine: str) -> dict:
 
     with tempfile.TemporaryDirectory() as tmpdir:
         clone_path = Path(tmpdir) / "repo"
-        result = subprocess.run(
-            ["git", "clone", "--depth=1", repo_url, str(clone_path)],
-            capture_output=True, text=True, timeout=120,
-        )
+        try:
+            result = subprocess.run(
+                ["git", "clone", "--depth=1", repo_url, str(clone_path)],
+                capture_output=True, text=True, timeout=300,
+            )
+        except subprocess.TimeoutExpired:
+            return {"url": repo_url, "error": "Clone timed out"}
         if result.returncode != 0:
             return {"url": repo_url, "error": f"Clone failed: {result.stderr[:200]}"}
 
@@ -137,13 +140,13 @@ def main():
 
     repos = list(args.repos)
 
-    # Auto-discover repos that passed Phase 1
+    # Auto-discover repos that passed Phase 1 (filtered by engine)
     if not repos and REPORTS_DIR.exists():
         for report_file in REPORTS_DIR.glob("*.json"):
             report = json.loads(report_file.read_text())
-            if report.get("recommendation") in ("PASS", "REVIEW"):
+            if report.get("engine") == args.engine and report.get("recommendation") in ("PASS", "REVIEW"):
                 repos.append(report["url"])
-        log.info("Auto-discovered %d repos from Phase 1 screening", len(repos))
+        log.info("Auto-discovered %d %s repos from Phase 1 screening", len(repos), args.engine)
 
     if not repos:
         log.error("No repos to review. Run screen_repo.py first or provide URLs.")

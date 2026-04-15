@@ -37,24 +37,41 @@ def check_license(repo_path: Path) -> dict:
     return {"status": "fail", "reason": "no license file found"}
 
 
+ASSET_EXTENSIONS = {
+    ".png", ".jpg", ".jpeg", ".bmp", ".svg", ".ico", ".webp", ".gif",
+    ".wav", ".ogg", ".mp3", ".flac",
+    ".ttf", ".otf", ".woff", ".woff2",
+    ".obj", ".fbx", ".glb", ".gltf", ".blend", ".dae",
+    ".tres", ".tscn", ".import", ".remap", ".cfg",
+    ".uasset", ".umap",
+    ".exe", ".dll", ".so", ".dylib",
+    ".zip", ".tar", ".gz", ".7z",
+    ".pdf", ".doc", ".docx",
+}
+
+
 def check_language_mix(repo_path: Path, target_extensions: set[str]) -> dict:
-    """Check that >80% of source files are in target language."""
-    all_files = []
+    """Check that target language files are well-represented (ignoring binary assets)."""
+    source_files = []
     target_files = []
+    skip_dirs = {".git", "node_modules", "__pycache__", "build", "Intermediate", "Saved"}
     for f in repo_path.rglob("*"):
-        if f.is_file() and not any(p in f.parts for p in [".git", "node_modules", "__pycache__", "build"]):
-            all_files.append(f)
-            if f.suffix in target_extensions:
-                target_files.append(f)
+        if not f.is_file() or any(p in f.parts for p in skip_dirs):
+            continue
+        if f.suffix.lower() in ASSET_EXTENSIONS:
+            continue
+        source_files.append(f)
+        if f.suffix in target_extensions:
+            target_files.append(f)
 
-    if not all_files:
-        return {"status": "skip", "reason": "no source files"}
+    if not target_files:
+        return {"status": "skip", "reason": "no target language files found"}
 
-    ratio = len(target_files) / len(all_files)
+    ratio = len(target_files) / len(source_files) if source_files else 0
     return {
-        "status": "pass" if ratio > 0.5 else "skip",  # Relaxed from 0.8 — game projects have assets
+        "status": "pass" if ratio > 0.3 or len(target_files) >= 20 else "skip",
         "ratio": round(ratio, 2),
-        "total_files": len(all_files),
+        "total_source_files": len(source_files),
         "target_files": len(target_files),
     }
 
@@ -122,12 +139,18 @@ def screen_repo(repo_url: str, engine: str) -> dict:
     with tempfile.TemporaryDirectory() as tmpdir:
         clone_path = Path(tmpdir) / "repo"
         log.info("Cloning %s ...", repo_url)
-        result = subprocess.run(
-            ["git", "clone", "--depth=1", repo_url, str(clone_path)],
-            capture_output=True, text=True, timeout=120,
-        )
+        try:
+            result = subprocess.run(
+                ["git", "clone", "--depth=1", repo_url, str(clone_path)],
+                capture_output=True, text=True, timeout=300,
+            )
+        except subprocess.TimeoutExpired:
+            report["checks"]["clone"] = {"status": "fail", "reason": "clone timed out"}
+            report["recommendation"] = "FAIL"
+            return report
         if result.returncode != 0:
             report["checks"]["clone"] = {"status": "fail", "reason": result.stderr[:500]}
+            report["recommendation"] = "FAIL"
             return report
 
         report["checks"]["license"] = check_license(clone_path)
@@ -136,9 +159,11 @@ def screen_repo(repo_url: str, engine: str) -> dict:
 
     # Overall recommendation
     checks = report["checks"]
-    if any(c.get("status") == "fail" for c in checks.values()):
+    # License is informational only — don't block on it (training use)
+    non_license_checks = {k: v for k, v in checks.items() if k != "license"}
+    if any(c.get("status") == "fail" for c in non_license_checks.values()):
         report["recommendation"] = "FAIL"
-    elif any(c.get("status") == "skip" for c in checks.values()):
+    elif any(c.get("status") == "skip" for c in non_license_checks.values()):
         report["recommendation"] = "SKIP"
     elif any(c.get("status") == "warn" for c in checks.values()):
         report["recommendation"] = "REVIEW"

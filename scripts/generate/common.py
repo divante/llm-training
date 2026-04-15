@@ -61,7 +61,7 @@ def get_client() -> OpenAI:
 
 _MAX_RETRIES = 6          # 1s → 2s → 4s → 8s → 16s → 32s (max ~63s total wait)
 _BASE_DELAY = 1.0         # seconds
-_RETRYABLE_STATUS_CODES = {429, 502, 503, 504}
+_RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
 
 
 def generate(
@@ -75,9 +75,13 @@ def generate(
     retries: int = _MAX_RETRIES,
 ) -> str | None:
     """Single-shot generation with exponential backoff for rate limits."""
+    resolved_model = model or DEFAULT_MODEL
     messages: list[dict[str, str]] = []
     if system:
         messages.append({"role": "system", "content": system})
+    # Disable thinking for Qwen 3.x models — they burn all tokens on reasoning otherwise
+    if "qwen3" in resolved_model.lower():
+        prompt = "/no_think\n" + prompt
     messages.append({"role": "user", "content": prompt})
 
     last_err: Exception | None = None

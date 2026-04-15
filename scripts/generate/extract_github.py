@@ -173,7 +173,11 @@ def main():
                     engine=unit["engine"],
                     code=unit["content"][:6000],
                 )
-                response = generate(client, prompt, system=SYSTEM_PROMPT, max_tokens=4096)
+                try:
+                    response = generate(client, prompt, system=SYSTEM_PROMPT, max_tokens=4096)
+                except Exception as e:
+                    log.warning("Skipping %s/%s after LLM error: %s", slug, unit["file_path"], e)
+                    continue
                 append_jsonl(raw_output, {
                     "index": done,
                     "repo": url,
