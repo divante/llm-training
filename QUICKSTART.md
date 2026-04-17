@@ -61,8 +61,8 @@ LLM_BASE_URL=http://192.168.50.233:11434/v1 LLM_MODEL=qwen2.5-coder:14b LLM_API_
 # approved_repos.yaml is populated automatically from repos scoring >=3.5
 
 # Phase 3: Extract from approved repos → multi-turn conversations
-LLM_BASE_URL=http://192.168.50.233:11434/v1 LLM_MODEL=qwen2.5-coder:14b LLM_API_KEY=unused \
-  uv run scripts/generate/extract_github.py --target 15000
+LLM_BASE_URL=http://192.168.50.117:11438/v1 LLM_API_KEY=unused \
+  uv run scripts/generate/extract_github.py --target 15000  --worker-id 0 --num-workers 2
 ```
 
 ### Step 3: Shader Pipeline (~3-4h generation)
@@ -76,7 +76,7 @@ uv run scripts/generate/generate_shaders.py --target 7500
 ```
 
 ---
-
+ 
 ## Creative Agent Datasets
 
 ### Step 4: Project Plans (~10-14h generation)

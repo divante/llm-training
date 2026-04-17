@@ -10,6 +10,7 @@ import json
 import logging
 import os
 import random
+import re
 import sys
 import time
 from datetime import datetime, timezone
@@ -43,7 +44,7 @@ log = logging.getLogger("dataset-gen")
 # ---------------------------------------------------------------------------
 
 DEFAULT_BASE_URL = os.environ.get("LLM_BASE_URL", "http://localhost:11437/v1")
-DEFAULT_MODEL = os.environ.get("LLM_MODEL", "qwen3.5:35b-a3b")
+DEFAULT_MODEL = os.environ.get("LLM_MODEL", "qwen3.6:35b-a3b")
 DEFAULT_API_KEY = os.environ.get("LLM_API_KEY", "unused")
 
 
@@ -332,6 +333,70 @@ def repair_json(raw: str | None) -> list[dict[str, Any]] | dict[str, Any] | None
     if result is not None:
         return result
 
+    # ── Structural extraction (last resort for code-heavy content) ──
+    result = _extract_conversations_structural(text)
+    if result is not None:
+        return result
+
+    return None
+
+
+_TURN_MARKER = re.compile(
+    r'"from"\s*:\s*"(human|gpt)"\s*,\s*"value"\s*:\s*"'
+)
+_TURN_CLOSE_MID = re.compile(r'"\s*}\s*,\s*$')
+_TURN_CLOSE_END = re.compile(r'"\s*}\s*\]\s*}?\s*$')
+
+
+def _unescape_json_content(s: str) -> str:
+    """Unescape JSON string escape sequences in extracted content."""
+    s = s.replace('\\"', '"')
+    s = s.replace('\\n', '\n')
+    s = s.replace('\\t', '\t')
+    s = s.replace('\\/', '/')
+    s = s.replace('\\\\', '\\')
+    return s
+
+
+def _extract_conversations_structural(text: str) -> dict | None:
+    """Extract conversations by finding turn boundary markers.
+
+    Falls back to structural parsing when JSON repair fails due to
+    unescaped code blocks inside string values. The ``"from": "human/gpt"``
+    pattern reliably separates turns even when the content is messy.
+    """
+    markers = list(_TURN_MARKER.finditer(text))
+    if len(markers) < 2:
+        return None
+
+    turns = []
+    for i, match in enumerate(markers):
+        role = match.group(1)
+        value_start = match.end()
+
+        if i + 1 < len(markers):
+            region = text[value_start:markers[i + 1].start()]
+            m = _TURN_CLOSE_MID.search(region)
+            if m:
+                content = region[:m.start()]
+            else:
+                content = region.rstrip().rstrip('{').rstrip().rstrip(',').rstrip().rstrip('}').rstrip()
+                if content.endswith('"'):
+                    content = content[:-1]
+        else:
+            region = text[value_start:]
+            m = _TURN_CLOSE_END.search(region)
+            if m:
+                content = region[:m.start()]
+            else:
+                content = region.rstrip().rstrip('}').rstrip().rstrip(']').rstrip().rstrip('}').rstrip()
+                if content.endswith('"'):
+                    content = content[:-1]
+
+        turns.append({"from": role, "value": _unescape_json_content(content)})
+
+    if len(turns) >= 4:
+        return {"conversations": turns}
     return None
 
 

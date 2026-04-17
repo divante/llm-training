@@ -24,6 +24,7 @@ from common import (
     get_client,
     log,
     log_progress,
+    read_jsonl,
 )
 
 DATASET = "game-dev-github"
@@ -126,9 +127,13 @@ def extract_code_units(repo_path: Path, repo_config: dict) -> list[dict]:
     return units
 
 
+import hashlib
+
 def main():
     parser = argparse.ArgumentParser(description="Extract code from approved repos (Phase 3)")
     parser.add_argument("--target", type=int, default=15000, help="Target conversation count")
+    parser.add_argument("--worker-id", type=int, default=0, help="ID of this worker (0-indexed)")
+    parser.add_argument("--num-workers", type=int, default=1, help="Total number of parallel workers")
     args = parser.parse_args()
 
     repos = load_approved_repos()
@@ -137,7 +142,12 @@ def main():
         return
 
     raw_output = OUTPUT_DIR / "raw_responses.jsonl"
-    done = count_lines(raw_output)
+
+    # Truly resumable: load already processed files
+    log.info("Loading processed records for deduplication...")
+    processed_records = read_jsonl(raw_output)
+    processed_units = { (r["repo"], r["file"]) for r in processed_records }
+    done = len(processed_records)
 
     if done >= args.target:
         log.info("Already have %d conversations", done)
@@ -146,7 +156,12 @@ def main():
     client = get_client()
     log_progress(DATASET, "extract", "running", progress=f"{done}/{args.target}")
 
-    for repo_config in repos:
+    for i, repo_config in enumerate(repos):
+        # Deterministic repository assignment (Parallelism)
+        # Worker 0 takes 0, 2, 4... Worker 1 takes 1, 3, 5...
+        if (i % args.num_workers) != args.worker_id:
+            continue
+
         url = repo_config["url"]
         slug = url.rstrip("/").split("/")[-1]
 
@@ -168,6 +183,10 @@ def main():
                 if done >= args.target:
                     break
 
+                # Skip if already processed (Resumability)
+                if (url, unit["file_path"]) in processed_units:
+                    continue
+
                 prompt = CONVERSATION_PROMPT.format(
                     file_path=unit["file_path"],
                     engine=unit["engine"],
@@ -179,7 +198,6 @@ def main():
                     log.warning("Skipping %s/%s after LLM error: %s", slug, unit["file_path"], e)
                     continue
                 append_jsonl(raw_output, {
-                    "index": done,
                     "repo": url,
                     "file": unit["file_path"],
                     "engine": unit["engine"],
