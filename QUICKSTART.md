@@ -68,11 +68,17 @@ LLM_BASE_URL=http://192.168.50.117:11438/v1 LLM_API_KEY=unused \
 ### Step 3: Shader Pipeline (~3-4h generation)
 
 ```bash
-# Prerequisite: place shader chunks at datasets/raw/shader-pipeline/*_chunks.jsonl
-# Option A: Export via Glyph (if shader docs are indexed)
-# Option B: Manual chunks (JSONL with "text" field)
+# 3a. Generate source chunks (run all three — they're independent)
+uv run scripts/generate/export_glyph_shaders.py          # Unreal + Godot from Glyph DB → ~6K chunks
+uv run scripts/generate/import_hf_shaders.py --limit 10000  # HuggingFace shader_dataset → 10K chunks
+uv run scripts/generate/scrape_bookofshaders.py           # Book of Shaders repo → ~376 chunks
 
+# 3b. Generate Q&A pairs from chunks
 uv run scripts/generate/generate_shaders.py --target 7500
+
+# Parallel (two workers):
+uv run scripts/generate/generate_shaders.py --target 7500 --worker-id 0 --num-workers 2
+LLM_BASE_URL=http://192.168.50.117:11438/v1 uv run scripts/generate/generate_shaders.py --target 7500 --worker-id 1 --num-workers 2
 ```
 
 ---

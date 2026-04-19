@@ -165,6 +165,12 @@ def main():
         url = repo_config["url"]
         slug = url.rstrip("/").split("/")[-1]
 
+        # Skip clone if all known files already processed
+        include_dirs = repo_config.get("include_dirs", [])
+        if include_dirs and all((url, f) in processed_units for f in include_dirs):
+            log.info("Skipping %s — all %d files already processed", slug, len(include_dirs))
+            continue
+
         with tempfile.TemporaryDirectory() as tmpdir:
             clone_path = Path(tmpdir) / "repo"
             log.info("Cloning %s ...", url)

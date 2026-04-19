@@ -21,6 +21,7 @@ dependencies = [
     "tqdm>=4.66",
     "rich>=13.0",
     "openai>=2.30.0",
+    "psycopg2-binary>=2.9.11",
 ]
 
 # GPTQ quantization backends (auto-gptq / gptqmodel) are NOT declared as
