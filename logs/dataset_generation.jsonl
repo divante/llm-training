@@ -161,3 +161,225 @@
 {"timestamp": "2026-04-19T03:17:27.448051+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1400/7500"}
 {"timestamp": "2026-04-19T03:21:11.081718+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 537, "progress": "537/1666"}
 {"timestamp": "2026-04-19T03:47:13.313892+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1950/7500"}
+{"timestamp": "2026-04-19T04:19:32.553639+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T04:21:42.641399+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1450/7500"}
+{"timestamp": "2026-04-19T04:33:37.497109+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2000/7500"}
+{"timestamp": "2026-04-19T05:18:37.399234+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T05:20:32.628179+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2050/7500"}
+{"timestamp": "2026-04-19T05:26:46.837593+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1500/7500"}
+{"timestamp": "2026-04-19T06:07:50.815183+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2100/7500"}
+{"timestamp": "2026-04-19T06:31:56.703094+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1550/7500"}
+{"timestamp": "2026-04-19T06:54:08.586586+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2150/7500"}
+{"timestamp": "2026-04-19T07:18:43.037200+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T07:36:08.670830+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1600/7500"}
+{"timestamp": "2026-04-19T07:40:41.148084+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2200/7500"}
+{"timestamp": "2026-04-19T08:27:26.013333+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2250/7500"}
+{"timestamp": "2026-04-19T08:40:47.510552+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1650/7500"}
+{"timestamp": "2026-04-19T09:14:02.804965+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2300/7500"}
+{"timestamp": "2026-04-19T09:44:59.743459+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1700/7500"}
+{"timestamp": "2026-04-19T10:00:25.578855+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2350/7500"}
+{"timestamp": "2026-04-19T10:18:39.431883+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T10:46:17.861619+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2400/7500"}
+{"timestamp": "2026-04-19T10:49:13.764466+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1750/7500"}
+{"timestamp": "2026-04-19T11:18:40.898983+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T11:31:32.851227+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2450/7500"}
+{"timestamp": "2026-04-19T11:52:03.644428+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1800/7500"}
+{"timestamp": "2026-04-19T12:17:14.411960+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2500/7500"}
+{"timestamp": "2026-04-19T12:19:14.777657+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T12:55:45.258824+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1850/7500"}
+{"timestamp": "2026-04-19T13:02:48.483851+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2550/7500"}
+{"timestamp": "2026-04-19T13:18:40.448520+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T13:48:55.687497+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2600/7500"}
+{"timestamp": "2026-04-19T14:00:09.068197+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1900/7500"}
+{"timestamp": "2026-04-19T14:34:15.267983+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2650/7500"}
+{"timestamp": "2026-04-19T15:02:59.405757+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "1950/7500"}
+{"timestamp": "2026-04-19T15:19:06.210053+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2700/7500"}
+{"timestamp": "2026-04-19T16:04:01.347094+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2750/7500"}
+{"timestamp": "2026-04-19T16:05:35.139335+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2000/7500"}
+{"timestamp": "2026-04-19T16:18:40.221115+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T16:49:13.038650+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2800/7500"}
+{"timestamp": "2026-04-19T17:18:38.762767+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T18:18:40.613362+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T19:13:32.974074+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2850/7500"}
+{"timestamp": "2026-04-19T19:18:37.448040+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T19:51:41.304032+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2900/7500"}
+{"timestamp": "2026-04-19T20:18:38.880019+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T20:29:46.020264+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "2950/7500"}
+{"timestamp": "2026-04-19T21:07:11.917929+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3000/7500"}
+{"timestamp": "2026-04-19T21:44:32.207327+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3050/7500"}
+{"timestamp": "2026-04-19T22:18:34.346297+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T22:21:49.017054+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3100/7500"}
+{"timestamp": "2026-04-19T22:59:10.604321+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3150/7500"}
+{"timestamp": "2026-04-19T23:18:39.156941+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 538, "progress": "538/1666"}
+{"timestamp": "2026-04-19T23:36:43.646264+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3200/7500"}
+{"timestamp": "2026-04-20T00:13:53.262586+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3250/7500"}
+{"timestamp": "2026-04-20T00:51:37.542295+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3300/7500"}
+{"timestamp": "2026-04-20T01:19:31.032784+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 561, "progress": "561/1666"}
+{"timestamp": "2026-04-20T01:28:57.280792+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3350/7500"}
+{"timestamp": "2026-04-20T02:06:23.520729+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3400/7500"}
+{"timestamp": "2026-04-20T02:22:25.066835+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 565, "progress": "565/1666"}
+{"timestamp": "2026-04-20T02:43:47.112614+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3450/7500"}
+{"timestamp": "2026-04-20T03:18:42.917654+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 565, "progress": "565/1666"}
+{"timestamp": "2026-04-20T03:20:46.346367+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3500/7500"}
+{"timestamp": "2026-04-20T03:57:57.893586+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3550/7500"}
+{"timestamp": "2026-04-20T04:20:25.140806+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T04:35:10.902665+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3600/7500"}
+{"timestamp": "2026-04-20T05:12:46.978967+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3650/7500"}
+{"timestamp": "2026-04-20T05:49:40.071447+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3700/7500"}
+{"timestamp": "2026-04-20T06:18:36.198590+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T06:27:16.539612+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3750/7500"}
+{"timestamp": "2026-04-20T07:04:32.667112+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3800/7500"}
+{"timestamp": "2026-04-20T07:41:08.268422+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3850/7500"}
+{"timestamp": "2026-04-20T08:18:13.293040+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3900/7500"}
+{"timestamp": "2026-04-20T08:18:34.142197+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T08:55:17.900785+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3950/7500"}
+{"timestamp": "2026-04-20T09:32:47.230661+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4000/7500"}
+{"timestamp": "2026-04-20T10:10:14.926357+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4050/7500"}
+{"timestamp": "2026-04-20T10:18:35.165023+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T10:47:50.896691+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4100/7500"}
+{"timestamp": "2026-04-20T11:25:09.216290+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4150/7500"}
+{"timestamp": "2026-04-20T12:02:35.956142+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4200/7500"}
+{"timestamp": "2026-04-20T12:18:36.810728+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T12:40:15.109190+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4250/7500"}
+{"timestamp": "2026-04-20T13:17:58.567089+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4300/7500"}
+{"timestamp": "2026-04-20T13:55:47.482452+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4350/7500"}
+{"timestamp": "2026-04-20T14:18:38.337916+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T14:33:02.955044+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4400/7500"}
+{"timestamp": "2026-04-20T15:10:53.108211+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4450/7500"}
+{"timestamp": "2026-04-20T15:18:43.328411+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T15:48:19.648007+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4500/7500"}
+{"timestamp": "2026-04-20T16:18:40.679977+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T16:25:56.682437+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "4550/7500"}
+{"timestamp": "2026-04-20T16:33:43.164042+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "482/492"}
+{"timestamp": "2026-04-20T16:53:08.705676+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "482/492"}
+{"timestamp": "2026-04-20T17:05:15.031230+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "done", "records": 492}
+{"timestamp": "2026-04-20T17:18:41.522282+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T18:46:50.233124+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "0/5"}
+{"timestamp": "2026-04-20T18:50:34.209358+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "done", "records": 5}
+{"timestamp": "2026-04-20T18:56:18.991734+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "5/500"}
+{"timestamp": "2026-04-20T19:18:40.485478+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T19:26:00.126877+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "50/500"}
+{"timestamp": "2026-04-20T19:47:37.765609+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "0/3"}
+{"timestamp": "2026-04-20T19:51:21.769482+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "done", "records": 3}
+{"timestamp": "2026-04-20T19:51:58.751820+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "100/500"}
+{"timestamp": "2026-04-20T19:52:27.344465+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "3/500"}
+{"timestamp": "2026-04-20T19:54:42.259116+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "492/500"}
+{"timestamp": "2026-04-20T19:54:42.261688+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "103/500"}
+{"timestamp": "2026-04-20T19:54:42.262399+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "5/500"}
+{"timestamp": "2026-04-20T19:54:42.279548+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "492/500"}
+{"timestamp": "2026-04-20T19:58:33.856612+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "500/500"}
+{"timestamp": "2026-04-20T19:58:33.856878+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "done", "records": 500}
+{"timestamp": "2026-04-20T20:00:29.454865+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "500/500"}
+{"timestamp": "2026-04-20T20:00:29.455077+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "done", "records": 500}
+{"timestamp": "2026-04-20T20:18:38.378622+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T20:21:25.270327+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "0/500"}
+{"timestamp": "2026-04-20T20:21:25.280305+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "0/500"}
+{"timestamp": "2026-04-20T20:23:34.723674+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "150/500"}
+{"timestamp": "2026-04-20T20:24:28.766058+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "50/500"}
+{"timestamp": "2026-04-20T20:49:53.639082+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "200/500"}
+{"timestamp": "2026-04-20T21:03:50.912579+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "50/500"}
+{"timestamp": "2026-04-20T21:06:57.032180+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "100/500"}
+{"timestamp": "2026-04-20T21:16:15.106836+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "50/500"}
+{"timestamp": "2026-04-20T21:27:38.972109+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "250/500"}
+{"timestamp": "2026-04-20T21:40:05.911091+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "100/500"}
+{"timestamp": "2026-04-20T21:57:32.559947+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "150/500"}
+{"timestamp": "2026-04-20T22:08:40.332156+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "300/500"}
+{"timestamp": "2026-04-20T22:18:14.015895+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "100/500"}
+{"timestamp": "2026-04-20T22:39:40.169033+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "150/500"}
+{"timestamp": "2026-04-20T22:46:59.175688+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "350/500"}
+{"timestamp": "2026-04-20T23:08:25.848589+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "200/500"}
+{"timestamp": "2026-04-20T23:18:41.494904+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 566, "progress": "566/1666"}
+{"timestamp": "2026-04-20T23:28:22.341319+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "400/500"}
+{"timestamp": "2026-04-20T23:45:50.679536+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "200/500"}
+{"timestamp": "2026-04-20T23:49:48.981217+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "150/500"}
+{"timestamp": "2026-04-21T00:07:46.906880+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "250/500"}
+{"timestamp": "2026-04-21T00:08:45.192856+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "450/500"}
+{"timestamp": "2026-04-21T00:44:06.195199+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "600/1666"}
+{"timestamp": "2026-04-21T00:45:42.426370+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 600, "progress": "600/1666"}
+{"timestamp": "2026-04-21T00:49:19.618356+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "250/500"}
+{"timestamp": "2026-04-21T00:51:26.027054+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "500/500"}
+{"timestamp": "2026-04-21T00:51:26.027623+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "done", "records": 500}
+{"timestamp": "2026-04-21T01:08:08.387281+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "300/500"}
+{"timestamp": "2026-04-21T01:18:28.757628+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "200/500"}
+{"timestamp": "2026-04-21T01:18:45.910351+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 600, "progress": "600/1666"}
+{"timestamp": "2026-04-21T01:50:53.578963+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "300/500"}
+{"timestamp": "2026-04-21T02:16:01.031856+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "350/500"}
+{"timestamp": "2026-04-21T02:30:29.967591+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 616, "progress": "616/1666"}
+{"timestamp": "2026-04-21T02:43:42.178429+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "250/500"}
+{"timestamp": "2026-04-21T02:47:29.592814+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "350/500"}
+{"timestamp": "2026-04-21T03:19:46.043443+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T03:26:21.738047+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "400/500"}
+{"timestamp": "2026-04-21T03:47:00.058954+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "400/500"}
+{"timestamp": "2026-04-21T04:18:53.278095+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T04:20:34.570836+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "300/500"}
+{"timestamp": "2026-04-21T04:32:54.439737+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "450/500"}
+{"timestamp": "2026-04-21T04:51:43.628997+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "450/500"}
+{"timestamp": "2026-04-21T05:32:08.572273+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "500/500"}
+{"timestamp": "2026-04-21T05:32:08.572800+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "done", "records": 500}
+{"timestamp": "2026-04-21T05:50:54.185069+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "350/500"}
+{"timestamp": "2026-04-21T05:53:23.195334+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "500/500"}
+{"timestamp": "2026-04-21T05:53:23.195915+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "done", "records": 500}
+{"timestamp": "2026-04-21T06:18:42.401454+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T07:06:38.228617+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "400/500"}
+{"timestamp": "2026-04-21T08:31:30.287559+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "450/500"}
+{"timestamp": "2026-04-21T09:56:28.923349+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "500/500"}
+{"timestamp": "2026-04-21T09:56:28.923631+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "done", "records": 500}
+{"timestamp": "2026-04-21T11:18:35.189491+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T12:18:37.297861+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T15:18:42.109292+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T16:18:39.623712+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T16:55:23.733426+00:00", "dataset": "shader-pipeline", "phase": "generate", "status": "running", "progress": "500/2005"}
+{"timestamp": "2026-04-21T17:01:06.029734+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/2"}
+{"timestamp": "2026-04-21T17:03:38.080001+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 2}
+{"timestamp": "2026-04-21T17:09:46.676143+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/2"}
+{"timestamp": "2026-04-21T17:11:31.619183+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 2}
+{"timestamp": "2026-04-21T17:18:36.398617+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T17:48:01.466430+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/5"}
+{"timestamp": "2026-04-21T17:48:02.814218+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/5"}
+{"timestamp": "2026-04-21T17:48:04.257727+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/5"}
+{"timestamp": "2026-04-21T17:48:05.394949+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/5"}
+{"timestamp": "2026-04-21T17:52:00.169860+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 5}
+{"timestamp": "2026-04-21T17:52:37.507654+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 5}
+{"timestamp": "2026-04-21T17:53:15.404000+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 5}
+{"timestamp": "2026-04-21T17:54:12.707940+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 5}
+{"timestamp": "2026-04-21T18:01:59.006098+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/5"}
+{"timestamp": "2026-04-21T18:01:59.920461+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/5"}
+{"timestamp": "2026-04-21T18:02:01.643644+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/5"}
+{"timestamp": "2026-04-21T18:02:02.325732+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/5"}
+{"timestamp": "2026-04-21T18:05:51.960415+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 5}
+{"timestamp": "2026-04-21T18:06:57.231323+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 5}
+{"timestamp": "2026-04-21T18:07:52.844921+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 5}
+{"timestamp": "2026-04-21T18:10:14.689730+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 5}
+{"timestamp": "2026-04-21T18:18:34.964245+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T18:25:23.261826+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/500"}
+{"timestamp": "2026-04-21T18:25:24.147780+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/500"}
+{"timestamp": "2026-04-21T18:25:25.517434+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/500"}
+{"timestamp": "2026-04-21T18:25:26.421624+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "0/500"}
+{"timestamp": "2026-04-21T18:56:06.610185+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "50/500"}
+{"timestamp": "2026-04-21T19:06:28.108767+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "50/500"}
+{"timestamp": "2026-04-21T19:13:33.322017+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "50/500"}
+{"timestamp": "2026-04-21T19:18:40.934007+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T19:20:07.737118+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "100/500"}
+{"timestamp": "2026-04-21T19:22:08.924556+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "50/500"}
+{"timestamp": "2026-04-21T19:46:41.240609+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "150/500"}
+{"timestamp": "2026-04-21T19:58:01.707577+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "100/500"}
+{"timestamp": "2026-04-21T19:58:33.253521+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "100/500"}
+{"timestamp": "2026-04-21T20:18:40.487105+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T20:21:42.354719+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "100/500"}
+{"timestamp": "2026-04-21T20:35:58.694434+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "150/500"}
+{"timestamp": "2026-04-21T20:45:26.113281+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "150/500"}
+{"timestamp": "2026-04-21T21:06:28.540524+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 193}
+{"timestamp": "2026-04-21T21:16:24.884932+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "150/500"}
+{"timestamp": "2026-04-21T21:18:35.328370+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T21:29:34.481355+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "200/500"}
+{"timestamp": "2026-04-21T22:10:47.945058+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "250/500"}
+{"timestamp": "2026-04-21T22:18:36.746730+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T22:22:27.817727+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "200/500"}
+{"timestamp": "2026-04-21T22:53:27.265731+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "300/500"}
+{"timestamp": "2026-04-21T23:18:35.229201+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 618, "progress": "618/1666"}
+{"timestamp": "2026-04-21T23:20:18.750421+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "250/500"}
+{"timestamp": "2026-04-21T23:24:27.996883+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 253}
+{"timestamp": "2026-04-21T23:33:49.876677+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "350/500"}
+{"timestamp": "2026-04-22T00:14:27.896092+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "400/500"}
+{"timestamp": "2026-04-22T00:32:38.821293+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "164/500"}
+{"timestamp": "2026-04-22T00:39:19.547134+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 429}

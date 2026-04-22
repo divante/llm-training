@@ -10,16 +10,21 @@ Target: ~5-10K examples.
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
+import json
+import random
 
 from common import (
     RAW_DIR,
+    add_worker_args,
     append_jsonl,
     generate,
     get_client,
+    get_output_path,
+    load_all_processed_keys,
     log,
     log_progress,
     read_jsonl,
+    repair_json,
 )
 
 DATASET = "shader-pipeline"
@@ -27,34 +32,85 @@ OUTPUT_DIR = RAW_DIR / DATASET
 
 SYSTEM_PROMPT = "You are a graphics programming expert specializing in real-time rendering, shader development, and GPU pipeline optimization."
 
+TARGET_LANGUAGES = [
+    "Godot Shading Language",
+    "HLSL (DirectX 12)",
+    "GLSL (OpenGL 4.6 / Vulkan)",
+    "Metal Shading Language",
+    "WGSL (WebGPU)",
+]
+
+PLATFORMS = [
+    "mobile (ARM Mali/Adreno)",
+    "integrated GPU (AMD APU)",
+    "Nintendo Switch",
+    "Steam Deck",
+    "WebGL 2.0",
+]
+
+SOURCE_EMPHASIS: dict[str, str] = {
+    "hf_shader_chunks.jsonl": """\
+Focus areas for this GLSL/HLSL shader code:
+- Explain the specific algorithm or technique used and why it works
+- Optimize it for {platform} with concrete changes (not generic advice)
+- Port it to {target_language}, adapting API-specific features
+- Extend it with a specific visual variation (e.g. add fog, animate a parameter, combine with another effect)
+- Debug a plausible issue (introduce a realistic bug, then fix it)""",
+
+    "godot_shader_chunks.jsonl": """\
+Focus areas for this Godot engine shader/rendering content:
+- Implement the described technique as a complete Godot shader with shader_type declaration
+- Explain Godot-specific concepts (hints, render modes, built-in uniforms) referenced in the material
+- Convert the approach to a different Godot shader type (spatial ↔ canvas_item ↔ particles)
+- Show how to control shader parameters from GDScript with concrete code
+- Optimize for {platform} with Godot-specific considerations""",
+
+    "unreal_shader_chunks.jsonl": """\
+Focus areas for this Unreal Engine rendering/material content:
+- Create a UE5 material graph that implements the described technique, with Custom HLSL nodes where needed
+- Explain the C++ rendering pipeline class/method and when to use vs alternatives
+- Write a complete Custom HLSL node for a material that uses the described functionality
+- Show how to set up material parameters and drive them from Blueprints/C++
+- Port the technique to {target_language} outside of Unreal""",
+
+    "bookofshaders_chunks.jsonl": """\
+Focus areas for this Book of Shaders / GLSL fundamentals content:
+- Implement the mathematical concept as a complete fragment shader with concrete values
+- Explain the math (SDF, noise, transforms) with step-by-step breakdown of specific operations
+- Create a creative variation that combines this technique with another (e.g. noise + color mapping)
+- Port to {target_language}, noting API differences in built-in functions
+- Show how to animate/parameterize the effect for interactive use""",
+}
+
+DEFAULT_EMPHASIS = """\
+Focus areas:
+- Write a complete shader implementing a specific technique from the source material
+- Explain the algorithm with references to specific functions and parameters
+- Port to {target_language} with API-specific adaptations
+- Optimize for {platform} with concrete, measurable changes
+- Extend with a specific visual enhancement"""
+
 SHADER_QA_PROMPT = """\
 Given this shader/graphics reference material:
 ---
 {content}
 ---
 
-Generate {n} diverse instruction/output pairs for training a coding assistant
-on shader and render pipeline topics.
+Generate {n} instruction/output pairs for training a coding assistant.
 
-Types to include:
-- "Write a shader that does X" → full GLSL/HLSL/Godot shader code
-- "Explain how this shader works" → line-by-line breakdown
-- "Port this to {target_language}" → converted code
-- "Optimize this shader for {platform}" → optimized version
-- "Create a UE5 material that..." → material node setup + Custom HLSL
-- "Debug this shader..." → identify and fix the issue
-- "What's the performance impact of..." → analysis with alternatives
+{emphasis}
 
 Output as JSON array:
 [
   {{"instruction": "...", "input": "", "output": "..."}}
 ]
 
-Requirements:
-- Complete, working shader code (not fragments)
-- Specify target API/language (GLSL, HLSL, Godot Shading Language)
-- Include comments explaining non-obvious techniques
-- Cover 2D and 3D use cases
+CRITICAL RULES:
+- Every instruction MUST reference specific techniques, functions, or concepts from the source material above
+- DO NOT use generic placeholders like "Write a shader that does X" or "Explain how this shader works"
+- Each instruction must be self-contained and distinct from the others
+- Include complete, working shader code (not fragments)
+- Specify the target API/language in each instruction
 """
 
 
@@ -77,16 +133,13 @@ def load_all_chunks() -> list[dict]:
 
 def main():
     parser = argparse.ArgumentParser(description="Generate shader-pipeline dataset")
-    parser.add_argument("--target", type=int, default=7500, help="Target example count")
+    add_worker_args(parser)
     parser.add_argument("--n-per-chunk", type=int, default=5, help="Q&A pairs per source chunk")
-    parser.add_argument("--worker-id", type=int, default=0, help="ID of this worker (0-indexed)")
-    parser.add_argument("--num-workers", type=int, default=1, help="Total number of parallel workers")
     args = parser.parse_args()
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    raw_output = OUTPUT_DIR / "raw_responses.jsonl"
+    raw_output = get_output_path(OUTPUT_DIR, args.worker_id)
 
-    # Load all chunks across all source files
     all_chunks = load_all_chunks()
     if not all_chunks:
         log.warning("No shader chunks available. Run export/scrape scripts first.")
@@ -97,10 +150,8 @@ def main():
              len(all_chunks),
              len(set(c["_source_file"] for c in all_chunks)))
 
-    # Resumability: track processed (source_file, chunk_index) pairs
-    processed_records = read_jsonl(raw_output)
-    processed_keys = {(r["source"], r["chunk_index"]) for r in processed_records}
-    done = len(processed_records)
+    processed_keys = load_all_processed_keys(OUTPUT_DIR, ("source", "chunk_index"))
+    done = len(read_jsonl(raw_output))
 
     if done >= args.target:
         log.info("Already have %d examples (target=%d)", done, args.target)
@@ -128,23 +179,32 @@ def main():
         if not content or len(content) < 50:
             continue
 
+        target_lang = random.choice(TARGET_LANGUAGES)
+        platform = random.choice(PLATFORMS)
+        emphasis_template = SOURCE_EMPHASIS.get(source_file, DEFAULT_EMPHASIS)
+        emphasis = emphasis_template.format(target_language=target_lang, platform=platform)
+
         prompt = SHADER_QA_PROMPT.format(
             content=content,
             n=args.n_per_chunk,
-            target_language="Godot Shading Language",
-            platform="mobile",
+            emphasis=emphasis,
         )
 
         try:
-            response = generate(client, prompt, system=SYSTEM_PROMPT, max_tokens=4096)
+            response = generate(client, prompt, system=SYSTEM_PROMPT)
         except Exception as e:
             log.warning("Skipping %s[%d] after LLM error: %s", source_file, chunk_index, e)
+            continue
+
+        parsed = repair_json(response)
+        if not parsed or not isinstance(parsed, list) or len(parsed) == 0:
+            log.warning("Skipping %s[%d]: response failed JSON repair", source_file, chunk_index)
             continue
 
         append_jsonl(raw_output, {
             "source": source_file,
             "chunk_index": chunk_index,
-            "response": response,
+            "response": json.dumps(parsed, ensure_ascii=False),
         })
         done += 1
 

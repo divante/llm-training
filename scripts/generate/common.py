@@ -17,6 +17,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import anthropic
 from openai import OpenAI
 
 # ---------------------------------------------------------------------------
@@ -40,20 +41,29 @@ logging.basicConfig(
 log = logging.getLogger("dataset-gen")
 
 # ---------------------------------------------------------------------------
-# LLM Client
+# LLM Client — provider-aware via LLM_PROVIDER env var
 # ---------------------------------------------------------------------------
+
+PROVIDER = os.environ.get("LLM_PROVIDER", "local")
 
 DEFAULT_BASE_URL = os.environ.get("LLM_BASE_URL", "http://localhost:11437/v1")
 DEFAULT_MODEL = os.environ.get("LLM_MODEL", "qwen3.6:35b-a3b")
 DEFAULT_API_KEY = os.environ.get("LLM_API_KEY", "unused")
 
+DEFAULT_ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
 
-def get_client() -> OpenAI:
-    """Create an OpenAI-compatible client from LLM_BASE_URL / LLM_API_KEY env vars."""
-    return OpenAI(
-        base_url=DEFAULT_BASE_URL,
-        api_key=DEFAULT_API_KEY,
-    )
+GEMINI_BASE_URL = os.environ.get("GEMINI_BASE_URL", "http://localhost:8317/v1")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "sk-IeEobuE2nRPtWxHK8uxHxYHGfksfeujbFWwgvkhpDpQN5")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+
+
+def get_client():
+    """Return the right LLM client based on LLM_PROVIDER env var."""
+    if PROVIDER == "anthropic":
+        return anthropic.Anthropic()
+    if PROVIDER == "gemini":
+        return OpenAI(base_url=GEMINI_BASE_URL, api_key=GEMINI_API_KEY)
+    return OpenAI(base_url=DEFAULT_BASE_URL, api_key=DEFAULT_API_KEY)
 
 
 # ---------------------------------------------------------------------------
@@ -66,21 +76,41 @@ _RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
 
 
 def generate(
-    client: OpenAI,
+    client,
     prompt: str,
     *,
     system: str | None = None,
-    max_tokens: int = 4096,
+    max_tokens: int = 16384,
     temperature: float = 0.7,
     model: str | None = None,
     retries: int = _MAX_RETRIES,
 ) -> str | None:
-    """Single-shot generation with exponential backoff for rate limits."""
-    resolved_model = model or DEFAULT_MODEL
+    """Single-shot generation. Dispatches to OpenAI or Anthropic based on client type."""
+    if isinstance(client, anthropic.Anthropic):
+        return _generate_anthropic(
+            client, prompt, system=system, max_tokens=max_tokens,
+            temperature=temperature, model=model, retries=retries,
+        )
+    return _generate_openai(
+        client, prompt, system=system, max_tokens=max_tokens,
+        temperature=temperature, model=model, retries=retries,
+    )
+
+
+def _generate_openai(
+    client: OpenAI,
+    prompt: str,
+    *,
+    system: str | None = None,
+    max_tokens: int = 16384,
+    temperature: float = 0.7,
+    model: str | None = None,
+    retries: int = _MAX_RETRIES,
+) -> str | None:
+    resolved_model = model or (GEMINI_MODEL if PROVIDER == "gemini" else DEFAULT_MODEL)
     messages: list[dict[str, str]] = []
     if system:
         messages.append({"role": "system", "content": system})
-    # Disable thinking for Qwen 3.x models — they burn all tokens on reasoning otherwise
     if "qwen3" in resolved_model.lower():
         prompt = "/no_think\n" + prompt
     messages.append({"role": "user", "content": prompt})
@@ -89,7 +119,7 @@ def generate(
     for attempt in range(retries + 1):
         try:
             response = client.chat.completions.create(
-                model=model or DEFAULT_MODEL,
+                model=resolved_model,
                 max_tokens=max_tokens,
                 temperature=temperature,
                 messages=messages,
@@ -99,7 +129,7 @@ def generate(
             last_err = e
             status = getattr(e, "status_code", None)
             if status and status not in _RETRYABLE_STATUS_CODES:
-                raise  # non-retryable error (auth, bad request, etc.)
+                raise
             if attempt < retries:
                 delay = _BASE_DELAY * (2 ** attempt) + random.uniform(0, 1)
                 log.warning("Retryable error (attempt %d/%d), sleeping %.1fs: %s",
@@ -110,12 +140,65 @@ def generate(
                 raise last_err
 
 
+def _generate_anthropic(
+    client: anthropic.Anthropic,
+    prompt: str,
+    *,
+    system: str | None = None,
+    max_tokens: int = 16384,
+    temperature: float = 0.7,
+    model: str | None = None,
+    retries: int = _MAX_RETRIES,
+) -> str | None:
+    resolved_model = model or DEFAULT_ANTHROPIC_MODEL
+    system_messages = []
+    if system:
+        system_messages = [{
+            "type": "text",
+            "text": system,
+            "cache_control": {"type": "ephemeral"},
+        }]
+
+    last_err: Exception | None = None
+    for attempt in range(retries + 1):
+        try:
+            response = client.messages.create(
+                model=resolved_model,
+                max_tokens=max_tokens,
+                temperature=temperature,
+                system=system_messages,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            return response.content[0].text
+        except anthropic.RateLimitError as e:
+            last_err = e
+            if attempt < retries:
+                delay = _BASE_DELAY * (2 ** attempt) + random.uniform(0, 1)
+                log.warning("Rate limited (attempt %d/%d), sleeping %.1fs",
+                            attempt + 1, retries, delay)
+                time.sleep(delay)
+            else:
+                log.error("All %d retries exhausted: %s", retries, e)
+                raise
+        except anthropic.APIStatusError as e:
+            last_err = e
+            if e.status_code in _RETRYABLE_STATUS_CODES and attempt < retries:
+                delay = _BASE_DELAY * (2 ** attempt) + random.uniform(0, 1)
+                log.warning("Retryable error (attempt %d/%d), sleeping %.1fs: %s",
+                            attempt + 1, retries, delay, e)
+                time.sleep(delay)
+            else:
+                raise
+        except Exception as e:
+            raise
+
+
 def generate_batch(
-    client: OpenAI,
+    client,
     prompts: list[str],
     *,
     system: str | None = None,
-    max_tokens: int = 4096,
+    max_tokens: int = 16384,
     temperature: float = 0.7,
     log_every: int = 100,
 ) -> list[str]:
@@ -398,6 +481,44 @@ def _extract_conversations_structural(text: str) -> dict | None:
     if len(turns) >= 4:
         return {"conversations": turns}
     return None
+
+
+# ---------------------------------------------------------------------------
+# Provider-aware output routing & cross-provider resumability
+# ---------------------------------------------------------------------------
+
+
+def get_output_path(output_dir: Path, worker_id: int = 0) -> Path:
+    """Return per-provider/worker output file path."""
+    if PROVIDER == "local":
+        tag = f"local_{worker_id}"
+    else:
+        tag = PROVIDER
+    return output_dir / f"raw_responses_{tag}.jsonl"
+
+
+def load_all_processed_keys(
+    output_dir: Path,
+    key_fields: tuple[str, ...],
+) -> set[tuple]:
+    """Scan all raw_responses_*.jsonl in output_dir, extract composite keys."""
+    processed: set[tuple] = set()
+    for resp_file in output_dir.glob("raw_responses_*.jsonl"):
+        for r in read_jsonl(resp_file):
+            try:
+                key = tuple(r[f] for f in key_fields)
+                processed.add(key)
+            except KeyError:
+                continue
+    log.info("Skipping %d items already processed across all providers", len(processed))
+    return processed
+
+
+def add_worker_args(parser) -> None:
+    """Add standard worker/target args to any generation script."""
+    parser.add_argument("--target", type=int, default=7500, help="Target record count")
+    parser.add_argument("--worker-id", type=int, default=0, help="ID of this worker (0-indexed)")
+    parser.add_argument("--num-workers", type=int, default=1, help="Total number of parallel workers")
 
 
 # ---------------------------------------------------------------------------
