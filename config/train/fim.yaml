@@ -1,0 +1,7 @@
+# FIM autocomplete specialization (Qwen2.5-Coder-1.5B, bf16 LoRA)
+# Small model — generous batch size
+overrides:
+  qwen2.5-coder-1.5b:
+    training:
+      batch_size: 32
+      max_seq_length: 4096

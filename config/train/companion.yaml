@@ -1,0 +1,7 @@
+# VSCode companion specialization (Qwen3.5-9B, bf16 LoRA)
+# Held for last — may switch to Qwen3.6-9B when available
+overrides:
+  qwen3.5-9b:
+    training:
+      batch_size: 8
+      max_seq_length: 8192

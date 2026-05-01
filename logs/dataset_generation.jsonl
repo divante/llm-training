@@ -383,3 +383,213 @@
 {"timestamp": "2026-04-22T00:14:27.896092+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "400/500"}
 {"timestamp": "2026-04-22T00:32:38.821293+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "164/500"}
 {"timestamp": "2026-04-22T00:39:19.547134+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 429}
+{"timestamp": "2026-04-22T01:14:18.449122+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "200/500"}
+{"timestamp": "2026-04-22T01:28:46.096358+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 654, "progress": "654/1666"}
+{"timestamp": "2026-04-22T02:08:58.934964+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "250/500"}
+{"timestamp": "2026-04-22T02:22:57.612368+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 659, "progress": "659/1666"}
+{"timestamp": "2026-04-22T03:03:20.123978+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "300/500"}
+{"timestamp": "2026-04-22T03:26:15.858486+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 669, "progress": "669/1666"}
+{"timestamp": "2026-04-22T03:59:18.301389+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "running", "progress": "350/500"}
+{"timestamp": "2026-04-22T04:19:02.913417+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T05:18:37.277315+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T06:18:33.728960+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T07:18:35.619556+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T07:52:06.307820+00:00", "dataset": "game-dev-github", "phase": "extract", "status": "done", "records": 381}
+{"timestamp": "2026-04-22T08:18:30.601357+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T10:18:31.833421+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T11:18:32.375888+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T12:18:31.034350+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T14:18:33.470384+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T15:18:34.328578+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T16:18:42.887473+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T17:19:06.227119+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T18:18:33.920848+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T19:18:43.726243+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T21:18:33.084409+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-22T22:18:37.736926+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 670, "progress": "670/1666"}
+{"timestamp": "2026-04-23T01:21:46.880452+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "700/1666"}
+{"timestamp": "2026-04-23T01:27:32.606453+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 706, "progress": "706/1666"}
+{"timestamp": "2026-04-23T02:19:05.440411+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 707, "progress": "707/1666"}
+{"timestamp": "2026-04-23T03:21:38.940041+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T05:18:34.943053+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T06:18:34.394112+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T07:18:35.213771+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T09:18:31.462495+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T11:18:32.025644+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T12:18:33.984186+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T13:18:30.931899+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T14:18:32.544713+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T15:18:38.198889+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T16:18:36.776085+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T17:18:34.375438+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T18:18:35.314482+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 712, "progress": "712/1666"}
+{"timestamp": "2026-04-23T22:12:02.988362+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "800/1666"}
+{"timestamp": "2026-04-23T23:00:41.609514+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 896, "progress": "896/1666"}
+{"timestamp": "2026-04-23T23:20:47.587140+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "900/1666"}
+{"timestamp": "2026-04-24T00:49:15.873418+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 966, "progress": "966/1666"}
+{"timestamp": "2026-04-24T01:21:55.269125+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 970, "progress": "970/1666"}
+{"timestamp": "2026-04-24T07:25:52.043301+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "1000/1666"}
+{"timestamp": "2026-04-24T10:18:35.250487+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 1073, "progress": "1073/1666"}
+{"timestamp": "2026-04-24T11:18:34.206599+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 1073, "progress": "1073/1666"}
+{"timestamp": "2026-04-24T12:18:39.334765+00:00", "dataset": "store-marketing", "phase": "generate", "status": "paused", "records": 1073, "progress": "1073/1666"}
+{"timestamp": "2026-04-24T16:20:51.695614+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "1100/1666"}
+{"timestamp": "2026-04-24T16:22:41.958704+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "1100/1666"}
+{"timestamp": "2026-04-24T18:30:12.361961+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "1200/1666"}
+{"timestamp": "2026-04-24T19:20:08.680628+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "1200/1666"}
+{"timestamp": "2026-04-24T20:21:36.249895+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "1300/1666"}
+{"timestamp": "2026-04-24T20:44:50.448537+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "1300/1666"}
+{"timestamp": "2026-04-25T00:19:57.221845+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "1500/1666"}
+{"timestamp": "2026-04-25T00:26:30.505317+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "1500/1666"}
+{"timestamp": "2026-04-25T02:03:35.666698+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "1600/1666"}
+{"timestamp": "2026-04-25T02:13:15.082840+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1769}
+{"timestamp": "2026-04-25T02:15:36.856565+00:00", "dataset": "store-marketing", "phase": "generate", "status": "running", "progress": "1600/1666"}
+{"timestamp": "2026-04-25T02:17:01.637018+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1777}
+{"timestamp": "2026-04-25T03:17:01.444444+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1844}
+{"timestamp": "2026-04-25T03:28:36.493042+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T04:17:01.451865+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T05:17:02.378770+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T06:17:02.332755+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T07:17:02.317053+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T08:17:02.222960+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T09:17:02.199838+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T10:17:02.203607+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T11:17:02.166669+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T12:17:02.081453+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T13:17:02.054272+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T14:17:01.977442+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T15:17:01.960781+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T16:17:01.924921+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T17:17:01.900914+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T18:17:01.874697+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T19:17:01.812113+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T20:17:01.729593+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T21:17:01.663079+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T22:17:01.622081+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-25T23:17:01.601124+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T00:17:01.559655+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T01:17:01.494347+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T02:17:01.503933+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T03:17:01.473952+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T04:17:01.435859+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T05:17:02.367148+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T06:17:02.363485+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T07:17:02.353651+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T08:17:02.357937+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T09:17:02.351734+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T10:17:02.315072+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T11:17:02.267044+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T12:17:02.241157+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T13:17:02.196193+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T14:17:02.152462+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T15:17:02.152106+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T16:17:02.137198+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T17:17:02.081286+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T18:17:02.011384+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T19:17:01.958089+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T20:17:01.959674+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T21:17:01.912486+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T22:17:01.843531+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-26T23:17:01.804926+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T00:17:01.785487+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T01:17:01.748161+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T02:17:01.676372+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T03:17:01.622109+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T04:17:01.561719+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T05:17:01.527742+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T06:17:01.531293+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T07:17:01.501746+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T08:17:01.450744+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T09:17:02.409914+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T10:17:02.383446+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T11:17:02.357894+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T12:17:02.340378+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T13:17:02.270163+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T14:17:02.221007+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T15:17:02.161560+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T16:17:02.105432+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T17:17:02.028698+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T18:17:01.968109+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T19:17:01.923997+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T20:17:01.896028+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T21:17:01.818744+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T22:17:01.811605+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-27T23:17:01.778171+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T00:17:01.778693+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T01:17:01.721036+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T02:17:01.677658+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T03:17:01.631742+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T04:17:01.532948+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T05:17:01.544641+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T06:17:01.514502+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T07:17:01.439509+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T08:17:02.333609+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T09:17:02.265447+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T10:17:02.228773+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T11:17:02.187026+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T12:17:02.120761+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T13:17:02.100486+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T14:17:02.098607+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T15:17:02.064461+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T16:17:02.030780+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T17:17:01.994066+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T18:17:01.952567+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T19:17:01.919095+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T20:17:01.892610+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T21:17:01.865772+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T22:17:01.813168+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-28T23:17:01.792290+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T00:17:01.763035+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T01:17:01.692452+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T02:17:01.666376+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T03:17:01.612236+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T04:17:01.584224+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T05:17:01.542937+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T06:17:01.471669+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T07:17:01.423812+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T08:17:02.349480+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T09:17:02.328151+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T10:17:02.339239+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T11:17:02.337935+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T12:17:02.309066+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T13:17:02.313990+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T14:17:02.300039+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T15:17:02.299042+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T16:17:02.307329+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T17:17:02.211576+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T18:17:02.179699+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T19:17:02.139462+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T20:17:02.149159+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T21:17:02.125081+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T22:17:02.092171+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-29T23:17:02.037070+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T00:17:02.044222+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T01:17:02.093797+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T02:17:02.069584+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T03:17:02.363678+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T04:17:01.588942+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T05:17:01.641461+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T06:17:02.438769+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T07:17:02.242434+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T08:17:01.654109+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T09:17:01.807713+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T10:17:01.748333+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T11:17:01.713065+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T12:17:01.680892+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T13:17:01.708804+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T14:17:01.752904+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T15:17:01.705832+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T16:17:01.667905+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T17:17:01.825550+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T18:17:03.046142+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T19:17:02.447092+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T20:17:01.578625+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T21:17:01.656788+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T22:17:01.853442+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-04-30T23:17:02.083261+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-05-01T00:17:02.150298+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-05-01T01:17:03.228209+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-05-01T02:17:02.431031+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-05-01T03:17:02.659282+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-05-01T04:17:01.927958+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-05-01T05:17:02.170214+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}
+{"timestamp": "2026-05-01T06:17:02.133573+00:00", "dataset": "store-marketing", "phase": "generate", "status": "done", "records": 1853}

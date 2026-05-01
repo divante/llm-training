@@ -1,9 +1,10 @@
 """Dataset curation: clean, filter, dedup, format, and split.
 
 Usage:
-    python scripts/curate.py --model code
-    python scripts/curate.py --model chat
-    python scripts/curate.py --all
+    uv run llm-curate --model game-dev
+    uv run llm-curate --model shader
+    uv run llm-curate --model fim
+    uv run llm-curate --all
 """
 
 from __future__ import annotations

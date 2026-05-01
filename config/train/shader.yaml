@@ -1,0 +1,6 @@
+# Shader specialization (Devstral-Small-2-24B, QLoRA)
+overrides:
+  devstral-small-2-24b:
+    training:
+      batch_size: 4
+      max_seq_length: 8192

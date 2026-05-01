@@ -89,6 +89,7 @@ def train(
     # Resolve training data
     train_data = load_training_data(specialization)
 
+    import torch
     log.info(f"Training config:")
     log.info(f"  Base: {base_name} ({base_cfg['hf_id']})")
     log.info(f"  Architecture: {architecture}")
@@ -96,6 +97,8 @@ def train(
     log.info(f"  Specialization: {specialization}")
     log.info(f"  Data: {train_data}")
     log.info(f"  Output: {adapter_dir}")
+    log.info(f"  Torch version: {torch.__version__}")
+    log.info(f"  Torch HIP version: {torch.version.hip}")
 
     training_params = train_cfg.get("training", {})
     lora_params = train_cfg.get("lora", {})
@@ -132,6 +135,21 @@ def train(
     return adapter_dir
 
 
+def _detect_device() -> tuple[str, bool]:
+    """Return (device_type, bf16_supported). device_type: 'cuda', 'rocm', 'cpu'."""
+    import torch
+    if torch.cuda.is_available():
+        # PyTorch ROCm presents as CUDA
+        is_rocm = torch.version.hip is not None
+        device_type = "rocm" if is_rocm else "cuda"
+        try:
+            bf16_ok = torch.cuda.is_bf16_supported()
+        except Exception:
+            bf16_ok = is_rocm  # ROCm RDNA3+ supports bf16
+        return device_type, bf16_ok
+    return "cpu", False
+
+
 def _run_training(
     base_model_path: Path,
     train_data_path: Path,
@@ -153,6 +171,9 @@ def _run_training(
         DataCollatorForLanguageModeling,
     )
 
+    device_type, bf16_supported = _detect_device()
+    log.info(f"Device: {device_type}, bf16: {bf16_supported}")
+
     training_params = train_cfg.get("training", {})
     lora_params = train_cfg.get("lora", {})
     quant_params = train_cfg.get("quantization", {})
@@ -166,40 +187,48 @@ def _run_training(
 
     max_seq_length = training_params.get("max_seq_length", 4096)
 
-    # Load model with appropriate precision
-    load_kwargs = {
+    # Determine dtype
+    if bf16_supported:
+        compute_dtype = torch.bfloat16
+    elif device_type != "cpu":
+        compute_dtype = torch.float16
+    else:
+        compute_dtype = torch.float32
+
+    # Load model — use 4-bit quantization on CUDA only (BNB doesn't support ROCm reliably)
+    # ROCm + accelerate device_map="auto" causes SIGSEGV; use explicit single-device instead
+    if device_type == "cuda":
+        device_map = "auto"
+    elif device_type == "rocm":
+        device_map = {"": 0}  # force single GPU, avoids accelerate SIGSEGV on ROCm
+    else:
+        device_map = "cpu"
+
+    load_kwargs: dict = {
         "pretrained_model_name_or_path": str(base_model_path),
         "trust_remote_code": True,
-        "device_map": "auto",
+        "device_map": device_map,
+        "dtype": compute_dtype,
     }
 
-    if train_method == "qlora" and quant_params.get("load_in_4bit", False):
+    use_bnb_4bit = (
+        train_method == "qlora"
+        and quant_params.get("load_in_4bit", False)
+        and device_type == "cuda"
+    )
+
+    if use_bnb_4bit:
         from transformers import BitsAndBytesConfig
-
-        compute_dtype = torch.bfloat16
-        try:
-            # Test bf16 support
-            if not torch.cuda.is_bf16_supported():
-                log.warning("bf16 not supported, falling back to fp16")
-                compute_dtype = torch.float16
-        except Exception:
-            compute_dtype = torch.float16
-
         bnb_config = BitsAndBytesConfig(
             load_in_4bit=True,
             bnb_4bit_compute_dtype=compute_dtype,
             bnb_4bit_quant_type=quant_params.get("bnb_4bit_quant_type", "nf4"),
         )
         load_kwargs["quantization_config"] = bnb_config
+        del load_kwargs["dtype"]
+        log.info("Loading with 4-bit BNB quantization (QLoRA)")
     else:
-        # bf16 LoRA — load in full precision
-        try:
-            if torch.cuda.is_bf16_supported():
-                load_kwargs["torch_dtype"] = torch.bfloat16
-            else:
-                load_kwargs["torch_dtype"] = torch.float16
-        except Exception:
-            load_kwargs["torch_dtype"] = torch.float16
+        log.info(f"Loading in {compute_dtype} (full precision LoRA)")
 
     log.info("Loading base model...")
     model = AutoModelForCausalLM.from_pretrained(**load_kwargs)
@@ -209,13 +238,12 @@ def _run_training(
         "q_proj", "k_proj", "v_proj", "o_proj",
         "gate_proj", "up_proj", "down_proj",
     ])
-    modules_to_save = lora_params.get("modules_to_save", None)
 
     lora_config = LoraConfig(
         r=lora_params.get("r", 64),
         lora_alpha=lora_params.get("alpha", 128),
         target_modules=target_modules,
-        modules_to_save=modules_to_save,
+        modules_to_save=lora_params.get("modules_to_save", None),
         lora_dropout=lora_params.get("dropout", 0.05),
         bias="none",
         task_type=TaskType.CAUSAL_LM,
@@ -234,10 +262,8 @@ def _run_training(
 
     log.info(f"Loaded {len(train_examples)} training examples")
 
-    # Tokenize
     def tokenize_example(example: dict) -> dict:
         if "conversations" in example:
-            # ShareGPT format — build chat from turns
             text_parts = []
             for turn in example["conversations"]:
                 role = "user" if turn["from"] == "human" else "assistant"
@@ -250,13 +276,7 @@ def _run_training(
             text += f"\n<|assistant|>\n{example.get('output', '')}"
         else:
             text = example.get("text", "")
-
-        return tokenizer(
-            text,
-            truncation=True,
-            max_length=max_seq_length,
-            padding=False,
-        )
+        return tokenizer(text, truncation=True, max_length=max_seq_length, padding=False)
 
     from datasets import Dataset
 
@@ -268,7 +288,6 @@ def _run_training(
         desc="Tokenizing",
     )
 
-    # Training arguments
     effective_batch = (
         training_params.get("batch_size", 4)
         * training_params.get("gradient_accumulation", 4)
@@ -277,6 +296,13 @@ def _run_training(
 
     log_dir = ROOT / "logs" / "training" / f"{base_name}_{specialization}"
     log_dir.mkdir(parents=True, exist_ok=True)
+
+    # paged_adamw_8bit requires BNB paged memory (CUDA only); ROCm uses fused adamw
+    configured_optimizer = train_cfg.get("optimizer", "paged_adamw_8bit")
+    if configured_optimizer == "paged_adamw_8bit" and (not use_bnb_4bit or device_type == "rocm"):
+        optimizer = "adamw_torch_fused" if device_type != "cpu" else "adamw_torch"
+    else:
+        optimizer = configured_optimizer
 
     training_args = TrainingArguments(
         output_dir=str(output_dir),
@@ -287,30 +313,24 @@ def _run_training(
         learning_rate=training_params.get("learning_rate", 2e-4),
         lr_scheduler_type=training_params.get("lr_scheduler", "cosine"),
         warmup_ratio=training_params.get("warmup_ratio", 0.03),
-        optim=train_cfg.get("optimizer", "paged_adamw_8bit"),
+        optim=optimizer,
         logging_dir=str(log_dir),
         logging_steps=10,
         save_strategy="steps",
         save_steps=500,
         save_total_limit=2,
-        bf16=load_kwargs.get("torch_dtype") == torch.bfloat16
-            or (isinstance(load_kwargs.get("quantization_config"), object)
-                and "bfloat16" in str(quant_params.get("bnb_4bit_compute_dtype", ""))),
-        fp16=load_kwargs.get("torch_dtype") == torch.float16,
+        bf16=(compute_dtype == torch.bfloat16 and device_type != "cpu"),
+        fp16=(compute_dtype == torch.float16 and device_type != "cpu"),
         report_to="none",
         dataloader_num_workers=2,
         remove_unused_columns=False,
-    )
-
-    data_collator = DataCollatorForLanguageModeling(
-        tokenizer=tokenizer, mlm=False
     )
 
     trainer = Trainer(
         model=model,
         args=training_args,
         train_dataset=tokenized,
-        data_collator=data_collator,
+        data_collator=DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False),
     )
 
     log.info("Starting training...")
@@ -319,7 +339,6 @@ def _run_training(
     log.info(f"Saving adapter to {output_dir}...")
     model.save_pretrained(str(output_dir))
     tokenizer.save_pretrained(str(output_dir))
-
     log.info("Training complete.")
 
 

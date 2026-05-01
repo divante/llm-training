@@ -1,107 +1,92 @@
 specializations:
-  code:
-    datasets_config: "config/train/code.yaml"
-    eval_suite: ["humaneval", "mbpp", "multipl_e"]
-    custom_eval: "datasets/eval/code.jsonl"
+  game-dev:
+    datasets_config: "config/train/game-dev.yaml"
+    eval_suite: ["humaneval", "mbpp"]
+    custom_eval: "datasets/eval/game-dev.jsonl"
+  shader:
+    datasets_config: "config/train/shader.yaml"
+    eval_suite: ["humaneval"]
+    custom_eval: "datasets/eval/shader.jsonl"
+  fim:
+    datasets_config: "config/train/fim.yaml"
+    eval_suite: ["humaneval_fim"]
+    custom_eval: "datasets/eval/fim.jsonl"
+  companion:
+    datasets_config: "config/train/companion.yaml"
+    eval_suite: ["humaneval", "mbpp"]
+    custom_eval: "datasets/eval/companion.jsonl"
   creative:
     datasets_config: "config/train/creative.yaml"
     eval_suite: ["mt_bench_writing", "alpaca_eval_writing"]
     custom_eval: "datasets/eval/creative.jsonl"
-  research:
-    datasets_config: "config/train/research.yaml"
-    eval_suite: ["mmlu_subset", "arc_challenge"]
-    custom_eval: "datasets/eval/research.jsonl"
   chat:
     datasets_config: "config/train/chat.yaml"
     eval_suite: ["mt_bench", "alpaca_eval"]
     custom_eval: "datasets/eval/chat.jsonl"
 
 bases:
+  qwen3.6-27b:
+    hf_id: "Qwen/Qwen3.6-27B"
+    architecture: dense
+    train_method: qlora
+    train_tool: unsloth
+  devstral-small-2-24b:
+    hf_id: "mistralai/Devstral-Small-2-24B-Instruct-2512"
+    architecture: dense
+    train_method: qlora
+  qwen2.5-coder-1.5b:
+    hf_id: "Qwen/Qwen2.5-Coder-1.5B"
+    architecture: dense
+    train_method: bf16_lora
   qwen3.5-9b:
     hf_id: "Qwen/Qwen3.5-9B"
     architecture: dense
-    train_method: bf16_lora  # small enough for bf16 on 128GB
-  qwen3.5-27b:
-    hf_id: "Qwen/Qwen3.5-27B"
-    architecture: dense
-    train_method: qlora  # QLoRA to reduce compute at 27B
-  qwen3.5-35b-a3b:
-    hf_id: "Qwen/Qwen3.5-35B-A3B"
-    architecture: moe
     train_method: bf16_lora
-    pre_quantized_base: "Qwen/Qwen3.5-35B-A3B-GPTQ-Int4"
-  qwen2.5-coder-32b:
-    hf_id: "Qwen/Qwen2.5-Coder-32B-Instruct"
-    architecture: dense
-    train_method: qlora
-  qwen2.5-coder-14b:
-    hf_id: "Qwen/Qwen2.5-Coder-14B-Instruct"
-    architecture: dense
-    train_method: bf16_lora  # 14B fits bf16 on 128GB
   glm-4-9b:
     hf_id: "THUDM/glm-4-9b-chat"
     architecture: dense
-    train_method: bf16_lora  # 9B fits bf16 on 128GB
+    train_method: bf16_lora
 
 # ===================================================================
-# QUANTIZATION CONSTRAINTS (Strix Halo iGPU + ROCm)
+# QUANTIZATION — TBD
 #
-# vLLM on AMD ROCm supports:
-#   - GPTQ: INT4 and INT8 ONLY (no 3/5/6-bit)
-#   - AWQ:  INT4 ONLY (hard-enforced in vLLM source)
-#   - GGUF: all levels (Q2-Q8), BUT ~3x slower than native GPTQ/AWQ
-#   - FP8:  NOT on RDNA 3/3.5 (needs MI300+ or CUDA 8.9+)
-#   - BNB:  NOT on ROCm at all
-#
-# Current focus: vLLM + GPTQ only.
-# GGUF/llama.cpp support is designed-in but deferred.
+# vLLM support for Qwen3.6 and Devstral-Small-2 is unverified.
+# May need GGUF (llama.cpp) instead of GPTQ for serving.
+# Defer decision until after training completes.
 # ===================================================================
 
 quant_levels:
-  # --- ACTIVE: vLLM native (GPTQ) ---
   gptq_int4: { method: gptq, bits: 4, group_size: 128, backend: vllm }
   gptq_int8: { method: gptq, bits: 8, group_size: 32,  backend: vllm }
+  # gguf_q4: { method: gguf, gguf_type: "Q4_K_M", backend: llamacpp }
 
-  # --- DEFERRED: GGUF via llama.cpp (uncomment to enable) ---
-  # gguf_q3:   { method: gguf, gguf_type: "Q3_K_M", backend: llamacpp }
-  # gguf_q4:   { method: gguf, gguf_type: "Q4_K_M", backend: llamacpp }
-  # gguf_q5:   { method: gguf, gguf_type: "Q5_K_M", backend: llamacpp }
-  # gguf_q6:   { method: gguf, gguf_type: "Q6_K",   backend: llamacpp }
-  # gguf_q8:   { method: gguf, gguf_type: "Q8_0",   backend: llamacpp }
-
-# Experiments to run.
-# Each entry generates 2 runs: vanilla (no fine-tune) + fine-tuned.
-# Format: base x quant x specialization
+# Experiments to run — priority order
 experiments:
-  # --- 9B vs 27B comparison ---
-  - base: qwen3.5-9b
-    quants: [gptq_int4, gptq_int8]
-    specializations: [code, creative, research, chat]
-
-  - base: qwen3.5-27b
+  # --- Priority 1: Game dev (Unreal/Godot) ---
+  - base: qwen3.6-27b
     quants: [gptq_int4]
-    specializations: [code, creative, research, chat]
+    specializations: [game-dev]
 
-  # --- MoE comparison ---
-  - base: qwen3.5-35b-a3b
-    quants: [gptq_int4]  # MoE: adapter-based, base is pre-quantized GPTQ-INT4
-    specializations: [creative, research, chat]
-
-  # --- Coding-specific (Coder models for code specialization) ---
-  - base: qwen2.5-coder-32b
+  # --- Priority 2: Shader ---
+  - base: devstral-small-2-24b
     quants: [gptq_int4]
-    specializations: [code]
+    specializations: [shader]
 
-  - base: qwen2.5-coder-14b
-    quants: [gptq_int4, gptq_int8]
-    specializations: [code]
+  # --- Priority 3: FIM autocomplete ---
+  - base: qwen2.5-coder-1.5b
+    quants: [gptq_int4]
+    specializations: [fim]
 
-  # --- GLM-4 baseline (current pick) ---
+  # --- Priority 4: Companion (held — waiting for Qwen3.6-9B) ---
+  # - base: qwen3.5-9b
+  #   quants: [gptq_int4]
+  #   specializations: [companion]
+
+  # --- Creative + Chat (unchanged) ---
   - base: glm-4-9b
     quants: [gptq_int4]
     specializations: [creative, chat]
 
-# Auto-cleanup between experiments
 cleanup:
   delete_merged_after_quantize: true
   delete_lora_after_merge: false
