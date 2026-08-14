@@ -99,3 +99,17 @@ Training depends on `(base_model, specialization)`, NOT quant level. Multiple qu
 ## Package Manager
 
 `uv` — lock file: `uv.lock`, Python 3.12+
+
+## V2 Product-Owner Build Guardrail
+
+For a spec-defined, buildable task bead, follow the canonical v2 workflow
+at `/data/obsidian/workflow/README.md`. Diego is product owner, not a
+midpoint reviewer: run A → B → C → D and stop only for the five canonical
+escalation triggers. `ACCEPTED` is Agent D automated acceptance, not a
+claim that Diego reviewed the work.
+
+Use v2 only when the project `CLAUDE.md` documents an exact full-suite
+command and its mandates, and Agent D is independent. If any precondition
+is missing, state the fallback and use per-step human review. Do not write
+smoke-test runbooks for v2 work. Push only after acceptance; if integration
+changes the accepted commit range, rerun acceptance.
